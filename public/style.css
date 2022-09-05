@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+  }
+  .openBtn {
+    display: flex;
+    justify-content: left;
+  }
+  .openButton {
+    border: none;
+    border-radius: 5px;
+    background-color: #1c87c9;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: fixed;
+  }
+  .artifPopup .attribPopup{
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  .formPopup {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-50%, 5%);
+    border: 3px solid #999999;
+    z-index: 9;
+  }
+  .attribFormPopup {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 15%;
+    transform: translate(-50%, 5%);
+    border: 2px solid #999999;
+    z-index: 10;
+  }
+  .formContainer {
+    max-width: 300px;
+    padding: 20px;
+    background-color: #fff;
+  }
+  .attribFormContainer {
+    max-width: 220px;
+    padding: 15px;
+    background-color: #fff;
+  }
+  .formContainer input[type=text] ,
+  .attribFormContainer input[type=text]{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    border: none;
+    background: #eee;
+  }
+  .formContainer input[type=text]:focus, .attribFormContainer input[type=text]:focus{
+    background-color: #ddd;
+    outline: none;
+  }
+  .formContainer .btn {
+    padding: 12px 20px;
+    border: none;
+    background-color: #8ebf42;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    opacity: 0.8;
+  }
+  .attribFormContainer .btn {
+    padding: 6px 14px;
+    border: none;
+    background-color: #8ebf42;
+    color: #fff;
+    cursor: pointer;
+    width: 60%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+  }
+  .formContainer .cancel, .attribFormContainer .cancel {
+    background-color: #cc0000;
+  }
+  .formContainer .btn:hover,
+  .attribFormContainer .btn:hover,
+  .openButton:hover {
+    opacity: 1;
+  }
+  .formContainer .botn {
+    padding: 6px 10px;
+    border: none;
+    background-color: #bfb942;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+  }
+  
+  .idBase {
+    display: none;
+  }

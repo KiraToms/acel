@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Configuration template</title>
+  </head>
+  <body>
+    <p>Configuration File Update</p>
+      <form method="post" action="update" enctype="multipart/form-data">
+        <% for (var i in scs){%>
+        <input type="text" name="sc" value="<%= scs[i].address %>">
+        <br /><br />
+        <%} %>
+        <button type="submit" name="upload">Save</button>
+      </form>
+
+      <form id='jsonPlaceholder'>
+        <label for="user">Users</label>
+        <select id="user" name='user'>
+            <option value="" selected></option>
+        </select>
+        <br />
+        <label for="post">Posts</label>
+        <select id="post" name='post'>
+            <option value="" selected></option>
+        </select>
+      </form>
+
+      <script src = 'dynamicforms.min.js'></script>
+      <script>
+       
+let formConfig = {
+  'id': 'jsonPlaceholder', // form id
+  'debug': true, // prints some info
+  'fields': [ // list of involved fields
+    {
+      'name': 'user', // field name
+      'fetch': {
+        // function to generate an url for remote calls
+        'makeUrl': (data) => `https://jsonplaceholder.typicode.com/users`,
+      },
+      'behavior': {
+        // function to postprocess data and adapt it according to our needs
+        'postProcessData': (htmlElement, data) => {
+          return data
+          .map(x => { return { 'value': x.id, 'text': x.username }; })
+          .sort((a, b) => { return a.text > b.text });
+        }
+      }
+    },
+    {
+      'name': 'post',
+      'fetch': {
+        'makeUrl': (data) => `https://jsonplaceholder.typicode.com/posts?userId=${data.user}`,
+      },
+      'behavior': {
+        'postProcessData': (htmlElement, data) => {
+          return data
+          .map(x => { return { 'value': x.id, 'text': x.title }; });
+        }
+      }
+    }
+  ],
+  'rules': [ // list of Update Rules
+    // a change on 'user' updates the 'post' field content
+    {
+      'name': 'user',
+      'update': ['post'],
+    }
+  ],
+  'init': [ // list of Init Rules
+    // the 'user' field loads its content remotely during the form initialization
+    {
+      'name': 'user',
+    }
+  ]
+};
+
+
+        let form = dynamicForms.makeForm(formConfig);
+      </script>
+  
+    </body>
+</html>

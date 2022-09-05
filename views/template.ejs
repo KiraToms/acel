@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Configuration template</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <p>Configuration File Creation</p>
+  <form method="post" action="create" enctype="multipart/form-data">
+    <label for="address">Smart Contract address</label>
+    <input type="text" id="address" name="address"><br><br>
+    <label for="startBlock">Start block</label>
+    <input type="text" id="startBlock" name="startBlock"><br><br>
+    <label for="endBlock">End block</label>
+    <input type="text" id="endBlock" name="endBlock"><br><br>
+    <label for="Artifs">Artifacts</label>
+    <input list="artifacts" id="Artifs" name="Artifs" />
+    <datalist id="artifacts">
+    </datalist><br><br>
+    <div class="openBtn">
+      <button type="button" name="addArtif" class="openButton" onclick="openForm()">New Artifact</button>
+    </div>
+    <br><br>
+    <label for="Rels">Relations</label>
+    <input list="Relations" id="Rels" name="Rels" />
+    <datalist id="Relations">
+    </datalist><br><br>
+    <div class="openBtn">
+      <button type="button" name="addRel" class="openButton" onclick="openRelForm()">New Relation</button>
+    </div>
+    <br><br>
+    <label for="Events">Events</label>
+    <input list="Events" id="Events" name="Events" />
+    <datalist id="Events">
+    </datalist><br><br>
+    <div class="openBtn">
+      <button type="button" name="addRel" class="openButton" onclick="openEventForm()">New Event</button>
+    </div>
+    <br><br>
+    <button type="submit" class="openButton" name="save">Save File</button>
+  </form>
+
+  <br><br>
+  <div class="artifPopup">
+    <div class="formPopup" id="popupForm">
+      <div class="formContainer" id="popupFormContainer">
+        <h2>Artifact information</h2>
+        <form id="formArtif">
+        <label for="objectType">
+          <strong>Type</strong>
+        </label>
+        <input type="text" id="objectType" placeholder="The artifact type" name="objectType" required>
+        <label for="id">
+          <strong>Identifier</strong>
+        </label>
+        <input list="idList" id="id" name="id" onchange="idChange(this)" />
+        <datalist id="idList">
+          <option value="Extracted"></option>
+          <option value="Incremental"></option>
+        </datalist>
+        <div class="idBase" id="divIdBase">
+          <label for="idBase">
+            Incremental Base
+          </label>
+          <input onchange="baseEntered()" type="text" id="idBase" placeholder="The prefix of the identifier" name="idBase" required>
+        </div>
+        <button type="button" class="botn" id="newAttrib">Add attribute</button>
+
+        <button type="button" class="btn" id="saveArtif">Save</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+     
+      </div>
+    </div>
+
+
+    <div class="attribPopup">
+      <div class="attribFormPopup" id="attribPopupForm">
+        <div class="attribFormContainer">
+          <h2>Attribute</h2>
+          <form id="formAttrib">
+          <label for="attribName">
+            <strong>Name</strong>
+          </label>
+          <input type="text" id="attribName" placeholder="The attribute name" name="attribName" required>
+          <label for="type">
+            <strong>Type</strong>
+          </label>
+          <input list="typeList" id="type" name="type" />
+          <datalist id="typeList">
+            <option value="String"></option>
+            <option value="Number"></option>
+          </datalist>
+          <button type="button" class="btn" id="addAttrib">Add</button>
+          <button type="button" class="btn cancel" onclick="closeAttribForm()">Close</button>
+        </form>
+        </div>
+      </div>
+
+      <div class="relPopup">
+        <div class="formPopup" id="relPopupForm">
+          <div class="formContainer" id="relFormContainer">
+            <h2>Relation information</h2>
+            <form id="formRel">
+            <label for="relationType">
+              <strong>Type</strong>
+            </label>
+            <input type="text" id="relationType" placeholder="The relation type" name="relationType" required>
+            <label for="source">
+              <strong>Source</strong>
+            </label>
+            <input list="artifacts" id="source" name="source" />
+            <label for="target">
+              <strong>Target</strong>
+            </label>
+            <input list="artifacts" id="target" name="target" />
+            <label for="cardinality">
+              <strong>Cardinality</strong>
+            </label>
+            <input list="cardiList" id="cardinality" name="cardinality" />
+            <datalist id="cardiList">
+              <option value="Many2One"></option>
+              <option value="Many2Many"></option>
+            </datalist>
+    
+            <button type="button" class="btn" id="saveRel">Save</button>
+            <button type="button" class="btn cancel" onclick="closeRelForm()">Close</button>
+            </form>
+         
+          </div>
+        </div>
+
+
+        <div class="eventPopup">
+          <div class="formPopup" id="eventPopupForm">
+            <div class="formContainer" id="eventFormContainer">
+              <h2>Event Mapping</h2>
+              <form id="formEvent">
+              <label for="scEventName">
+                <strong>SC Event Name</strong>
+              </label>
+              <input type="text" id="scEventName" placeholder="The smart contract event name" name="scEventName" required>
+              
+              <label for="param">
+                <strong>Parameters</strong>
+              </label>
+              <input type="text" id="param" placeholder="The Parameters seperated by a comma" name="param" required>
+              <button type="button" class="btn" id="saveParam">Save parameters</button>
+
+              <h2>ACEL Mapping</h2>
+              <label for="eventName">
+                <strong>Event Name</strong>
+              </label>
+              <input type="text" id="eventName" placeholder="The name of the activity" name="eventName" required>
+              <label for="objs">
+                <strong>Objects</strong>
+              </label>
+              <label for="obj">
+                <strong>Object </strong>
+              </label>
+              <input list="artifacts" id="obj" name="obj" />
+              <label >
+                <strong>Attributes mapping</strong>
+              </label>
+              <label for="obj">
+              <strong>Attribute </strong>
+              </label>
+              <input list="attributes" id="attrib" name="attrib" />
+              <label >
+                <strong>Parameter </strong>
+              </label>
+              <input list="params" id="aram" name="aram" />
+              <label >
+              <datalist id="attribs">
+              </datalist>
+              <datalist id="params">
+              </datalist>
+             
+              <button type="button" class="botn" id="map">Add Object Mapping</button>
+              <button type="button" class="botn" id="relmap">Add Relation Mapping</button>
+      
+              <button type="button" class="btn" id="saveEvent">Save</button>
+              <button type="button" class="btn cancel" onclick="closeEventForm()">Close</button>
+              </form>
+           
+            </div>
+          </div>
+      
+      
+        
+      
+
+      <script src = 'mydynamicForm.js'></script>
+</body>
+
+</html>

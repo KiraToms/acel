@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Configuration template</title>
+  </head>
+  <body>
+    <p>Configuration File Upload</p>
+      <form method="post" action="post" enctype="multipart/form-data">
+        <input type="file" name="configFile" /><br /><br />
+        <button type="submit" name="upload">Upload</button>
+      </form>
+      <p>Smart Contract Code Upload</p>
+      <form method="post" action="postSc" enctype="multipart/form-data">
+        <input type="file" name="ScCode" /><br /><br />
+        <button type="submit" name="upload">Upload</button>
+      </form>
+      <p>New Configuration File</p>
+      <form method="get" action="new" >
+      <button  type="submit" name="create">Create</button>
+    </form>
+  </body>
+</html>
