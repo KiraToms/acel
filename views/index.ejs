@@ -3,21 +3,393 @@
   <head>
     <meta charset="utf-8">
     <title>Configuration template</title>
+    <link href="style_index.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <p>Configuration File Upload</p>
-      <form method="post" action="post" enctype="multipart/form-data">
-        <input type="file" name="configFile" /><br /><br />
-        <button type="submit" name="upload">Upload</button>
-      </form>
-      <p>Smart Contract Code Upload</p>
-      <form method="post" action="postSc" enctype="multipart/form-data">
-        <input type="file" name="ScCode" /><br /><br />
-        <button type="submit" name="upload">Upload</button>
-      </form>
-      <p>New Configuration File</p>
-      <form method="get" action="new" >
-      <button  type="submit" name="create">Create</button>
-    </form>
+    
+
+    <div class="app">
+      <header class="app-header">
+        <div class="app-header-logo">
+          <div class="logo">
+            <a href="" onclick="openDef()">
+            <span class="logo-icon">
+              <img src="logo.png" />
+            </span>
+            <h1>
+              <span>ACEL toolkit</span>
+              </h1>
+            </a>
+            
+          </div>
+          <h1>
+            Artifact-Centric Process Mining
+           </h1>
+        </div>
+      
+    
+      </header>
+
+      <div class="app-body">
+
+
+        <div class="app-body-navigation">
+          <nav class="navigation">
+            <a href="#" onclick="openConf()">
+              <i class="ph-browsers"></i>
+              <span>Configuration Template</span>
+            </a>
+            <a href="#" onclick="openExt()">
+              <i class="ph-check-square"></i>
+              <span>Extraction</span>
+            </a>
+            <a href="#" onclick="openPmin()">
+              <i class="ph-swap"></i>
+              <span>Process Mining</span>
+            </a>
+          
+          </nav>
+          <footer class="footer">
+            <h1>ACEL toolkit<small>©</small></h1>
+            <div>
+              Acel ©<br />
+              All Rights Reserved 2022
+            </div>
+          </footer>
+        </div>
+
+
+        <div class="app-body-main-content">
+
+
+          <section class="default-section" id="def">
+           
+            <div class="tiles">
+              <article class="tile">
+                <div class="tile-header">
+                  <i class="ph-lightning-light"></i>
+                  <h3>
+                    ACEL toolkit is a tool assisting users in the extraction of artifact-centric 
+                    data from blockchain and discovery of process models from this data 
+                    using existing process mining techniques.
+                  </h3>
+                </div>
+               
+              </article>
+           
+           
+            </div>
+
+            <div class="default-section-footer">
+              <p>Use the left menu to :
+                
+                <ol>
+                  <li>
+                      Create a configuration file using our template or edit your own file
+                  </li>
+                  <li>
+                      Extract event data and generate an ACEL log by providing a configuration file
+                  </li>
+                  <li>
+                      Discover object-centric models by providing an ACEL log
+                  </li>
+                </ol> 
+              </p>
+            </div>
+
+          </section>
+
+
+          <section class="conf-section" id="conf">
+            <div class="fileformPopup" id="filePopupForm">
+              <div class="fileformContainer" id="fileformContainer">
+              <H2>Configuration File Creation</H2>
+              <form class="fo" enctype="multipart/form-data">
+                <label for="address">
+                  <strong>
+                    Smart Contract address
+                  </strong>
+                </label>
+                <input type="text" id="address" name="address"><br><br>
+
+                <label for="abi">
+                  <strong>
+                    ABI
+                  </strong>
+                </label>
+                <input type="text" id="abi" name="abi"><br><br>
+
+                <label for="startBlock">
+                  <strong>
+                    Start block
+                  </strong>
+                </label>
+                <input type="text" id="startBlock" name="startBlock"><br><br>
+                <label for="endBlock">
+                  <strong>
+                    End block
+                  </strong>
+                  </label>
+                <input type="text" id="endBlock" name="endBlock"><br><br>
+                <label for="Artifs">
+                  <strong>
+                    Artifacts
+                  </strong>
+                  </label>
+                <input type="text" list="artifacts" id="Artifs" name="Artifs" />
+                <datalist id="artifacts">
+                </datalist>
+                <div class="openBtn">
+                  <button type="button" name="addArtif" class="openButton" onclick="openForm()">New Artifact</button>
+                </div>
+                <br>
+                <label for="Rels">
+                  <strong>
+                    Relations
+                  </strong>
+                  </label>
+                <input type="text" list="Relations" id="Rels" name="Rels" />
+                <datalist id="Relations">
+                </datalist>
+                <div class="openBtn">
+                  <button type="button" name="addRel" class="openButton" onclick="openRelForm()">New Relation</button>
+                </div>
+                <br>
+                <label for="Events">
+                  <strong>
+                    Events
+                  </strong>
+                  </label>
+                <input type="text" list="Events" id="Events" name="Events" />
+                <datalist id="Events">
+                </datalist>
+                <div class="openBtn">
+                  <button type="button" name="addRel" class="openButton" onclick="openEventForm()">New Event</button>
+                </div>
+              
+                <button type="button" class="openBotn" name="save" onclick="send()">Save File</button>
+              </form>
+            </div>
+            </div>
+            
+            
+             
+              <div class="artifPopup" id="artifPopup">
+                  <div class="artifformContainer" id="artifformContainer">
+                    <h2>Artifact information</h2>
+                    <form id="formArtif">
+                    <label for="objectType">
+                      <strong>Type</strong>
+                    </label>
+                    <input type="text" id="objectType" placeholder="The artifact type" name="objectType" required>
+                    <label for="id">
+                      <strong>Identifier</strong>
+                    </label>
+                    <input type="text" list="idList" id="id" name="id" />
+                    <datalist id="idList">
+                      <option value="Extracted"></option>
+                      <option value="Incremental"></option>
+                    </datalist>
+                    <div class="idBase" id="divIdBase">
+                      <label for="idBase">
+                        Incremental Base
+                      </label>
+                      <input type="text" id="idBase" placeholder="The prefix of the identifier" name="idBase" required>
+                    </div>
+                    <button type="button" class="btn botn" id="newAttrib">Add attribute</button>
+            
+                    <button type="button" class="btn" id="saveArtif">Save</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </form>
+                 
+                  </div>
+                </div>
+             
+            
+                <div class="attribPopup">
+                  <div class="attribFormPopup" id="attribPopupForm">
+                    <div class="attribFormContainer">
+                      <h2>Attribute</h2>
+                      <form id="formAttrib">
+                      <label for="attribName">
+                        <strong>Name</strong>
+                      </label>
+                      <input type="text" id="attribName" placeholder="The attribute name" name="attribName" required>
+                      <label for="type">
+                        <strong>Type</strong>
+                      </label>
+                      <input type="text" list="typeList" id="type" name="type" />
+                      <datalist id="typeList">
+                        <option value="String"></option>
+                        <option value="Number"></option>
+                      </datalist>
+                      <label for="static">
+                        <strong>Nature</strong>
+                      </label>
+                      <input type="text" list="staticList" id="static" name="static" />
+                      <datalist id="staticList">
+                        <option value="Static"></option>
+                        <option value="Dynamic"></option>
+                      </datalist>
+                      <button type="button" class="btn" id="addAttrib">Add</button>
+                      <button type="button" class="btn cancel" onclick="closeAttribForm()">Close</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+            
+                
+                    <div class="relPopup" id="relPopupForm">
+                      <div class="relformContainer" id="relFormContainer">
+                        <h2>Relation information</h2>
+                        <form id="formRel">
+                        <label for="relationType">
+                          <strong>Type</strong>
+                        </label>
+                        <input type="text" id="relationType" placeholder="The relation type" name="relationType" required>
+                        <label for="source">
+                          <strong>Source</strong>
+                        </label>
+                        <input type="text" list="artifacts" id="source" name="source" />
+                        <label for="target">
+                          <strong>Target</strong>
+                        </label>
+                        <input type="text" list="artifacts" id="target" name="target" />
+                        <label for="cardinality">
+                          <strong>Cardinality</strong>
+                        </label>
+                        <input type="text" list="cardiList" id="cardinality" name="cardinality" />
+                        <datalist id="cardiList">
+                          <option value="Many2One"></option>
+                          <option value="Many2Many"></option>
+                        </datalist>
+                
+                        <button type="button" class="btn" id="saveRel">Save</button>
+                        <button type="button" class="btn cancel" onclick="closeRelForm()">Close</button>
+                        </form>
+                     
+                      </div>
+                    </div>
+               
+            
+                  
+                      <div class="eventformPopup" id="eventPopupForm">
+                        <div class="eventformContainer" id="eventFormContainer">
+                          <h2>Event Mapping</h2>
+                          <form id="formEvent">
+                          <label for="scEventName">
+                            <strong>SC Event Name</strong>
+                          </label>
+                          <input type="text" id="scEventName" placeholder="Smart contract event name" name="scEventName" required>
+                          
+                          <label for="param">
+                            <strong>Parameters</strong>
+                          </label>
+                          <input type="text" id="param" placeholder="SC Parameters seperated by a comma" name="param" required>
+                          <button type="button" class="btn bootn" id="saveParam">Save parameters</button>
+            
+                          <h2>ACEL Mapping</h2>
+                          <label for="eventName">
+                            <strong>Event Name</strong>
+                          </label>
+                          <input type="text" id="eventName" placeholder="Name of the activity" name="eventName" required>
+                          
+                        
+                          <br>
+                          <label for="obj">
+                            <strong>Object</strong>
+                          </label>
+                          <input type="text" list="artifacts" id="obj" name="obj" />
+                         
+                           <br>
+                          <label for="attrib">
+                          <strong>Attribute</strong>
+                          </label>
+                          <input type="text" list="attribs" id="attrib" name="attrib" />
+                          <label for="aram">
+                            <strong>Parameter </strong>
+                          </label>
+                          <input type="text" list="params" id="aram" name="aram" />
+                          <label >
+                          <datalist id="attribs">
+                          </datalist>
+                          <datalist id="params">
+                          </datalist>
+                         
+                          <button type="button" class="btn botn" id="map">Add Object Mapping</button>
+                          <button type="button" class="btn botn" id="relmap">Add Relation Mapping</button>
+                  
+                          <button type="button" class="btn" id="saveEvent">Save</button>
+                          <button type="button" class="btn cancel" onclick="closeEventForm()">Close</button>
+                          </form>
+                       
+                        </div>
+                      </div>
+          </section>
+
+          <section class="extract-section" id="ext">
+            <div class="transfer-section-header">
+              <div class="fileformPopup" id="filePopupForm">
+                <div class="fileformContainer" id="fileformContainer">
+              <h2>Configuration File</h2>
+              <form method="post" action="post" enctype="multipart/form-data">
+                <label for="configFile" class="drop-container">
+                  <span class="drop-title">Drop file here</span>
+                  or
+                  <input type="file" id="configFile"  required>
+                </label>
+                <button type="submit" class="openBotn" name="upload">Generate ACEL log</button>
+                
+              </form>
+              <!--p>Smart Contract Code Upload</p>
+              <form method="post" action="postSc" enctype="multipart/form-data">
+                <input type="file" name="ScCode" /><br /><br />
+                <button type="submit" name="upload">Upload</button>
+              </form-->   
+            </div>
+            </div>
+            </div>
+          </section>
+
+
+          <section class="pmin-section" id="pmin">
+            <div class="transfer-section-header">
+ 
+              <div class="transfer-section-header">
+                <div class="fileformPopup" id="filePopupForm">
+                  <div class="fileformContainer" id="fileformContainer">
+                <h2>ACEL Log </h2>
+                <form method="post" action="post" enctype="multipart/form-data">
+                  <label for="configFile" class="drop-container">
+                    <span class="drop-title">Drop file here</span>
+                    or
+                    <input type="file" id="configFile"  required>
+                  </label>
+                  <button type="submit" class="openBotn" name="upload">Discover BP model</button>
+                  
+                </form>
+            </div>
+           
+          </section>
+
+
+        </div>
+
+
+       
+
+
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity=
+    "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous">
+</script>
+<script src = 'mydynamicForm.js'></script>
+    <script src = 'index.js'></script>
+    
   </body>
 </html>

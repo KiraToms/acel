@@ -4,6 +4,8 @@ const router = express.Router();
 const upload = require('./uploadMiddleware');
 const multer = require('multer')
 const parser = require('@solidity-parser/parser');
+const { json } = require('body-parser');
+const fs = require('fs');
 
 router.get('/', async function (req, res) {
   await res.render('index');
@@ -13,13 +15,32 @@ router.get('/new', async function (req, res) {
   await res.render('template');
 });
 
-router.post('/create',  async function (req, res, err) {
+router.post('/create',  function (req, res, err) {
 
+//   console.log('it worked')
+    
+  let jsonData = req.body
 
-    // let bufferData = req.file.buffer;
-    // let stringData = bufferData.toString();
-    // let jsonData = JSON.parse(stringData)
-  return res.status(200).json({message:"success"})
+ 
+  let jsonContent = JSON.stringify(jsonData);
+  //put it in public
+  fs.writeFile("configTest2.json", jsonContent, 'utf8', function (err) {
+    // fs.writeFile("KittyAOcel_22.jsonocel", jsonContent, 'utf8', function (err) {
+    if (err) {
+        console.log("An error occured while writing JSON Object to File.");
+        return console.log(err);
+    }
+
+    console.log("JSON file has been saved.");
+
+});
+
+let rawdata = fs.readFileSync('configTest2.json');
+//let config = JSON.parse(rawdata);
+  //console.log(jsonData)   
+ res.json(rawdata)
+ //res.render('template');
+ //res.send("About this wiki");
 // await res.render('updateConfigFile', {scs: jsonData.smartContracts});
 
 });

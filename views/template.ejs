@@ -8,45 +8,74 @@
 </head>
 
 <body>
-  <p>Configuration File Creation</p>
-  <form method="post" action="create" enctype="multipart/form-data">
-    <label for="address">Smart Contract address</label>
+ 
+ <div class="fileformPopup" id="filePopupForm">
+  <div class="fileformContainer" id="fileformContainer">
+  <H2>Configuration File Creation</H2>
+  <form class="fo" method="post" action="create" enctype="multipart/form-data">
+    <label for="address">
+      <strong>
+        Smart Contract address
+      </strong>
+    </label>
     <input type="text" id="address" name="address"><br><br>
-    <label for="startBlock">Start block</label>
+    <label for="startBlock">
+      <strong>
+        Start block
+      </strong>
+    </label>
     <input type="text" id="startBlock" name="startBlock"><br><br>
-    <label for="endBlock">End block</label>
+    <label for="endBlock">
+      <strong>
+        End block
+      </strong>
+      </label>
     <input type="text" id="endBlock" name="endBlock"><br><br>
-    <label for="Artifs">Artifacts</label>
-    <input list="artifacts" id="Artifs" name="Artifs" />
+    <label for="Artifs">
+      <strong>
+        Artifacts
+      </strong>
+      </label>
+    <input type="text" list="artifacts" id="Artifs" name="Artifs" />
     <datalist id="artifacts">
-    </datalist><br><br>
+    </datalist>
     <div class="openBtn">
       <button type="button" name="addArtif" class="openButton" onclick="openForm()">New Artifact</button>
     </div>
-    <br><br>
-    <label for="Rels">Relations</label>
-    <input list="Relations" id="Rels" name="Rels" />
+    <br>
+    <label for="Rels">
+      <strong>
+        Relations
+      </strong>
+      </label>
+    <input type="text" list="Relations" id="Rels" name="Rels" />
     <datalist id="Relations">
-    </datalist><br><br>
+    </datalist>
     <div class="openBtn">
       <button type="button" name="addRel" class="openButton" onclick="openRelForm()">New Relation</button>
     </div>
-    <br><br>
-    <label for="Events">Events</label>
-    <input list="Events" id="Events" name="Events" />
+    <br>
+    <label for="Events">
+      <strong>
+        Events
+      </strong>
+      </label>
+    <input type="text" list="Events" id="Events" name="Events" />
     <datalist id="Events">
-    </datalist><br><br>
+    </datalist>
     <div class="openBtn">
       <button type="button" name="addRel" class="openButton" onclick="openEventForm()">New Event</button>
     </div>
-    <br><br>
-    <button type="submit" class="openButton" name="save">Save File</button>
+  
+    <button type="submit" class="openBotn" name="save">Save File</button>
   </form>
+</div>
+</div>
 
-  <br><br>
-  <div class="artifPopup">
-    <div class="formPopup" id="popupForm">
-      <div class="formContainer" id="popupFormContainer">
+
+ 
+  <div class="artifPopup" id="artifPopup">
+      <div class="artifformContainer" id="artifformContainer">
         <h2>Artifact information</h2>
         <form id="formArtif">
         <label for="objectType">
@@ -56,7 +85,7 @@
         <label for="id">
           <strong>Identifier</strong>
         </label>
-        <input list="idList" id="id" name="id" onchange="idChange(this)" />
+        <input type="text" list="idList" id="id" name="id" onchange="idChange(this)" />
         <datalist id="idList">
           <option value="Extracted"></option>
           <option value="Incremental"></option>
@@ -67,7 +96,7 @@
           </label>
           <input onchange="baseEntered()" type="text" id="idBase" placeholder="The prefix of the identifier" name="idBase" required>
         </div>
-        <button type="button" class="botn" id="newAttrib">Add attribute</button>
+        <button type="button" class="btn botn" id="newAttrib">Add attribute</button>
 
         <button type="button" class="btn" id="saveArtif">Save</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
@@ -75,7 +104,7 @@
      
       </div>
     </div>
-
+ 
 
     <div class="attribPopup">
       <div class="attribFormPopup" id="attribPopupForm">
@@ -89,7 +118,7 @@
           <label for="type">
             <strong>Type</strong>
           </label>
-          <input list="typeList" id="type" name="type" />
+          <input type="text" list="typeList" id="type" name="type" />
           <datalist id="typeList">
             <option value="String"></option>
             <option value="Number"></option>
@@ -99,10 +128,11 @@
         </form>
         </div>
       </div>
+    </div>
 
-      <div class="relPopup">
-        <div class="formPopup" id="relPopupForm">
-          <div class="formContainer" id="relFormContainer">
+    
+        <div class="artifPopup" id="relPopupForm">
+          <div class="artifformContainer" id="relFormContainer">
             <h2>Relation information</h2>
             <form id="formRel">
             <label for="relationType">
@@ -112,15 +142,15 @@
             <label for="source">
               <strong>Source</strong>
             </label>
-            <input list="artifacts" id="source" name="source" />
+            <input type="text" list="artifacts" id="source" name="source" />
             <label for="target">
               <strong>Target</strong>
             </label>
-            <input list="artifacts" id="target" name="target" />
+            <input type="text" list="artifacts" id="target" name="target" />
             <label for="cardinality">
               <strong>Cardinality</strong>
             </label>
-            <input list="cardiList" id="cardinality" name="cardinality" />
+            <input type="text" list="cardiList" id="cardinality" name="cardinality" />
             <datalist id="cardiList">
               <option value="Many2One"></option>
               <option value="Many2Many"></option>
@@ -132,55 +162,54 @@
          
           </div>
         </div>
+   
 
-
-        <div class="eventPopup">
-          <div class="formPopup" id="eventPopupForm">
-            <div class="formContainer" id="eventFormContainer">
+      
+          <div class="eventformPopup" id="eventPopupForm">
+            <div class="eventformContainer" id="eventFormContainer">
               <h2>Event Mapping</h2>
               <form id="formEvent">
               <label for="scEventName">
                 <strong>SC Event Name</strong>
               </label>
-              <input type="text" id="scEventName" placeholder="The smart contract event name" name="scEventName" required>
+              <input type="text" id="scEventName" placeholder="Smart contract event name" name="scEventName" required>
               
               <label for="param">
                 <strong>Parameters</strong>
               </label>
-              <input type="text" id="param" placeholder="The Parameters seperated by a comma" name="param" required>
-              <button type="button" class="btn" id="saveParam">Save parameters</button>
+              <input type="text" id="param" placeholder="SC Parameters seperated by a comma" name="param" required>
+              <button type="button" class="btn bootn" id="saveParam">Save parameters</button>
 
               <h2>ACEL Mapping</h2>
               <label for="eventName">
                 <strong>Event Name</strong>
               </label>
-              <input type="text" id="eventName" placeholder="The name of the activity" name="eventName" required>
-              <label for="objs">
-                <strong>Objects</strong>
-              </label>
+              <input type="text" id="eventName" placeholder="Name of the activity" name="eventName" required>
+              
+            
+              <br>
               <label for="obj">
-                <strong>Object </strong>
+                <strong>Object</strong>
               </label>
-              <input list="artifacts" id="obj" name="obj" />
-              <label >
-                <strong>Attributes mapping</strong>
+              <input type="text" list="artifacts" id="obj" name="obj" />
+             
+               <br>
+              <label for="attrib">
+              <strong>Attribute</strong>
               </label>
-              <label for="obj">
-              <strong>Attribute </strong>
-              </label>
-              <input list="attributes" id="attrib" name="attrib" />
-              <label >
+              <input type="text" list="attribs" id="attrib" name="attrib" />
+              <label for="aram">
                 <strong>Parameter </strong>
               </label>
-              <input list="params" id="aram" name="aram" />
+              <input type="text" list="params" id="aram" name="aram" />
               <label >
               <datalist id="attribs">
               </datalist>
               <datalist id="params">
               </datalist>
              
-              <button type="button" class="botn" id="map">Add Object Mapping</button>
-              <button type="button" class="botn" id="relmap">Add Relation Mapping</button>
+              <button type="button" class="btn botn" id="map">Add Object Mapping</button>
+              <button type="button" class="btn botn" id="relmap">Add Relation Mapping</button>
       
               <button type="button" class="btn" id="saveEvent">Save</button>
               <button type="button" class="btn cancel" onclick="closeEventForm()">Close</button>
@@ -189,8 +218,7 @@
             </div>
           </div>
       
-      
-        
+
       
 
       <script src = 'mydynamicForm.js'></script>
