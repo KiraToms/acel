@@ -5,7 +5,8 @@ var acelFile = {}
 var acelArtifs = {}
 var artifs = {}
 var acelRels = {}
-var acelEvents = {}
+var acelEvents = []
+var objectMappings = {}
 
 function openForm() {
   document.getElementById("artifPopup").style.display = "block";
@@ -57,12 +58,12 @@ function saveAttrib(){
 }
 
 async function idChange(artif) {
-  if (document.getElementById("id").value == "Incremental") {
+  if (document.getElementById("objId").value == "Incremental") {
     console.log('the base')
     document.getElementById("divIdBase").style.display = "block";
 
   }
-  if (document.getElementById("id").value == "Extracted") {
+  if (document.getElementById("objId").value == "Extracted") {
     artif["id"] = "Extracted";
   }
 }
@@ -77,7 +78,7 @@ async function initArtif(){
 
 
 
-  const idField = document.getElementById("id")
+  const idField = document.getElementById("objId")
   await idField.addEventListener('change', () => {
     console.log("change")
      idChange(artif) 
@@ -168,8 +169,7 @@ async function initRel(){
     
     //rel["id"] = ""
 
-   
-
+  
 const artifBtn = document.getElementById('saveRel')
 await artifBtn.addEventListener('click', () => {
     relationType = document.getElementById("relationType").value
@@ -205,34 +205,157 @@ async function initEvent(){
 
     const paramBtn = document.getElementById('saveParam')
     await paramBtn.addEventListener('click', () => {
+      
         let paramRaw = document.getElementById("param").value
         let params = paramRaw.split(';')
         event["parameters"] = params
-        //get id if extracted
-        var paramList = document.getElementById('params')
-        params.forEach(p => {
-          console.log("param is ")
-          console.log(p)           
-            let option = document.createElement('option')
-            option.value = p
-            paramList.appendChild(option)
-            console.log(paramList.value)
-            
-        });
+        console.log("the parameters")
+        console.log(params)
+        document.getElementById("topic").style.display = "none";
+        document.getElementById("mappingform").style.display = "block";
           
     });
+
+    const objectToMapButton = document.getElementById('obj')
+
     
 
-const artifBtn = document.getElementById('saveEvent')
-await artifBtn.addEventListener('click', () => {
+    await objectToMapButton.addEventListener('change', () => {
+      let objectMapping = document.getElementById('objectMapping')
+
+
+
+
+      let objectType = document.getElementById("obj").value
+      console.log("object type")
+      console.log(objectType)
+
+      let artif = acelArtifs[objectType]
+      let attributes = Object.keys(artif)
+      
+      let params = event["parameters"]
+      let paramsList = document.createElement('datalist')
+      paramsList.id = "params"
+      params.forEach(p => {          
+          let option = document.createElement('option')
+          option.value = p
+          paramsList.appendChild(option)
+          
+      });
+    objectMapping.appendChild(paramsList)
+
+      attributes.forEach(att => {
+        console.log("increment base")
+        console.log(artif[att]["incrementalBase"])
+         if(! artif[att]["incrementalBase"] && att != ""){
+
+         
+          let label = document.createElement('label')
+          label.setAttribute('for', att)
+          label.innerHTML = att         
+          let input = document.createElement('input')
+          input.id = att
+          input.type = 'text'
+          input.setAttribute('list', 'params')
+
+          objectMapping.appendChild(label)
+          objectMapping.appendChild(input)
+
+        }
+       
+          
+      });
+
+      
+      let lifecycle = document.createElement('label')
+          lifecycle.for = "lifecycle"
+          lifecycle.innerHTML = "Lifecycle"       
+          lifecycle.ariaPlaceholder = "The state of the object"       
+      let inputlifecycle = document.createElement('input')
+          inputlifecycle.id = "lifecycle"
+          inputlifecycle.type = 'text'
+
+          objectMapping.appendChild(lifecycle)
+          objectMapping.appendChild(inputlifecycle)
+      
+      
+      objectMapping.style.display = "block"
+        
+  });
+
+    
+
+  const mapBtn = document.getElementById('map')
+  await mapBtn.addEventListener('click', () => { 
+    console.log('event name after map click')
+    console.log(document.getElementById("eventName").value)
+    let scEvent = document.getElementById("scEventName").value
+    let objectType = document.getElementById("obj").value
+    let artif = acelArtifs[objectType]
+    let attributes = Object.keys(artif)
+    objectMappings[scEvent] = {}
+    objectMappings[scEvent]["objects"] = []
+    objectMappings[scEvent]["objects"]["objectType"] = objectType
+    objectMappings[scEvent]["objects"]["attributes"] = {}
+    
+    if (artif["id"]["incrementalBase"]){
+        objectMappings[scEvent]["objects"]["id"] = "base"
+    }
+    else{
+      objectMappings[scEvent]["objects"]["id"] = document.getElementById("id").value
+    }
+    
+  
+    attributes.forEach(att => {
+       if(att != "id" && att != ""){
+       
+        
+      objectMappings[scEvent]["objects"]["attributes"][att] = document.getElementById(att).value
+              
+      }
+     
+        
+    });
+    objectMappings[scEvent]["objects"]["lifecycle"] = document.getElementById("lifecycle").value
+//print the objects mapping
+  
+  })
+
+
+const EventBtn = document.getElementById('saveEvent')
+await EventBtn.addEventListener('click', () => {
     event['scEventName'] = document.getElementById("scEventName").value
-    event['EventName'] = document.getElementById("eventtName").value
-
+    console.log()
     event["eventMappings"] = []
+    const eventMapping = {}
+    eventMapping['EventName'] = {}
+    console.log('event name after saveevent click')
+    console.log(document.getElementById("eventName").value)
+    eventMapping['EventName']["value"] = document.getElementById("eventName").value
+    eventMapping['EventName']["type"] = "String"
+    eventMapping['EventName']["required"] = "true"
+    eventMapping['id'] = {}
+    eventMapping['id']["type"]="String",
+    eventMapping['id']["incrementalBase"]="e"
+    eventMapping['id']["required"]="true"
+    eventMapping['timestamp']={}
+    eventMapping['timestamp']["type"]="Timestamp"
+    eventMapping['timestamp']["value"]="block.timestamp"
+    eventMapping['timestamp']["required"]="true"
+    eventMapping['attributes'] = {}
 
+    console.log("object mappin of event")
+    console.log(event['scEventName'])
+    console.log(objectMappings[event['scEventName']])
+    eventMapping['objects'] = objectMappings[event['scEventName']]
+    
 
+    
+    event["eventMappings"].push(eventMapping)
 
-    acelRels[relationType] = rel
+    acelEvents.push(event)
+
+    //acelRels[relationType] = rel
     console.log('the events are ')
     console.log(Object.keys(acelEvents))
     closeEventForm()
@@ -249,7 +372,6 @@ await artifBtn.addEventListener('click', () => {
 async function send() {
   console.log("we are here")
 
-  
   let sc = {}
   sc["address"] = document.getElementById("address").value
 //   let address = sc["address"]
@@ -268,31 +390,24 @@ async function send() {
   sc["startBlock"] = document.getElementById("startBlock").value
   sc["endBlock"] = document.getElementById("endBlock").value
 
-
   sc["Artifacts"] = acelArtifs
+  sc["Events"] = acelEvents
  
-
   acelFile["smartContracts"] = []
   acelFile["smartContracts"].push(sc)
 
   console.log(acelFile.toString())
-
        $.post("create",
-          
              acelFile
           ,
           function (data, status) {
             if(status=='success'){
                $(location).attr('href', '');
             }
-            
               else{
-                console.log(status)
+              console.log(status)
               }
-          });
-
-
-      
+          });      
 }
 
 //onchange of selected artif display attribs to be mapped and id if extracted

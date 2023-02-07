@@ -186,7 +186,7 @@
                     <label for="id">
                       <strong>Identifier</strong>
                     </label>
-                    <input type="text" list="idList" id="id" name="id" />
+                    <input type="text" list="idList" id="objId" name="objId" />
                     <datalist id="idList">
                       <option value="Extracted"></option>
                       <option value="Incremental"></option>
@@ -278,6 +278,8 @@
                         <div class="eventformContainer" id="eventFormContainer">
                           <h2>Event Mapping</h2>
                           <form id="formEvent">
+                          <div class="topic" id="topic">
+              
                           <label for="scEventName">
                             <strong>SC Event Name</strong>
                           </label>
@@ -286,9 +288,17 @@
                           <label for="param">
                             <strong>Parameters</strong>
                           </label>
-                          <input type="text" id="param" placeholder="SC Parameters seperated by a comma" name="param" required>
-                          <button type="button" class="btn bootn" id="saveParam">Save parameters</button>
+                          <input type="text" id="param" placeholder="SC Parameters seperated by a semicolon" name="param" required>
+                          <button type="button" class="btn bootn" id="saveParam">ACEL Mapping</button>
             
+                        
+                          <button type="button" class="btn cancel" onclick="closeEventForm()">Close</button>
+                        </div>
+              
+
+                      <div class="mappingform" id="mappingform">
+                        
+                        
                           <h2>ACEL Mapping</h2>
                           <label for="eventName">
                             <strong>Event Name</strong>
@@ -303,26 +313,26 @@
                           <input type="text" list="artifacts" id="obj" name="obj" />
                          
                            <br>
+
                           <label for="attrib">
-                          <strong>Attribute</strong>
+                          <strong>Attributes</strong>
                           </label>
-                          <input type="text" list="attribs" id="attrib" name="attrib" />
-                          <label for="aram">
-                            <strong>Parameter </strong>
-                          </label>
-                          <input type="text" list="params" id="aram" name="aram" />
-                          <label >
-                          <datalist id="attribs">
-                          </datalist>
-                          <datalist id="params">
-                          </datalist>
-                         
+                          <div class="objectMapping" id="objectMapping">
+
+
+           
+                         </div>
                           <button type="button" class="btn botn" id="map">Add Object Mapping</button>
+                          
+                          
                           <button type="button" class="btn botn" id="relmap">Add Relation Mapping</button>
                   
                           <button type="button" class="btn" id="saveEvent">Save</button>
                           <button type="button" class="btn cancel" onclick="closeEventForm()">Close</button>
-                          </form>
+                        </div>
+              
+                        
+                        </form>
                        
                         </div>
                       </div>
