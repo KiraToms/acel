@@ -6,6 +6,8 @@ const multer = require('multer')
 const parser = require('@solidity-parser/parser');
 const { json } = require('body-parser');
 const fs = require('fs');
+const path = require('path')
+
 
 router.get('/', async function (req, res) {
   await res.render('index');
@@ -15,33 +17,44 @@ router.get('/new', async function (req, res) {
   await res.render('template');
 });
 
-router.post('/create',  function (req, res, err) {
+function creatingFile(name, content){
+ return new Promise((resolve, reject) => {
+    fs.writeFile(name, content, 'utf8', function (err) {
+      if (err) {
+          reject("An error occured while writing JSON Object to File.");
+          
+      }
+  
+      resolve("JSON file saved.");
+  
+  });
+  })
+}
 
-//   console.log('it worked')
+router.post('/create',  async function (req, res, next) {
+
+
     
   let jsonData = req.body
 
- 
+  const filename = "configTest2.json"
   let jsonContent = JSON.stringify(jsonData);
-  //put it in public
-  fs.writeFile("configTest2.json", jsonContent, 'utf8', function (err) {
-    // fs.writeFile("KittyAOcel_22.jsonocel", jsonContent, 'utf8', function (err) {
-    if (err) {
-        console.log("An error occured while writing JSON Object to File.");
-        return console.log(err);
-    }
 
-    console.log("JSON file has been saved.");
+await creatingFile(filename, jsonContent).then(data =>{
+  console.log(data)
+}).catch(err => {
+  console.log(err)
+})
 
-});
-
-let rawdata = fs.readFileSync('configTest2.json');
-//let config = JSON.parse(rawdata);
-  //console.log(jsonData)   
- res.json(rawdata)
- //res.render('template');
- //res.send("About this wiki");
-// await res.render('updateConfigFile', {scs: jsonData.smartContracts});
+const filepath = path.join(__dirname, 'configTest2.json')
+res.download(filepath, filename, function (err){
+  if(err){
+    console.log(err)
+  }
+  else {
+    console.log("file sent")
+  }
+})
 
 });
 
@@ -56,7 +69,6 @@ router.post('/post', upload.single('configFile'), async function (req, res, err)
       let bufferData = req.file.buffer;
       let stringData = bufferData.toString();
       let jsonData = JSON.parse(stringData)
-    // return res.status(200).json(jsonData)
 await res.render('updateConfigFile', {scs: jsonData.smartContracts});
 
   });
@@ -74,11 +86,7 @@ await res.render('updateConfigFile', {scs: jsonData.smartContracts});
       try {
         const ast = parser.parse(stringData)
 
-        //get all enums as list propose as artifs
-        //selected one should be kept as temp passed to form edit and written in template
-        //but first give template as form filled out by user no help just interface
-        //suggestions are next
-        //ask med for the the js or node defill options best interactive faster code
+      
         res.status(200).json(ast)
       }
       catch(e){
@@ -87,10 +95,9 @@ await res.render('updateConfigFile', {scs: jsonData.smartContracts});
         }
       }
 
-    //   let jsonData = JSON.parse(stringData)
+ 
     return res
-    // await res.render('updateConfigFile', {scs: jsonData.smartContracts});
-
+   
   });
 
   router.post('/update', async function (req, res, err) {
