@@ -374,11 +374,11 @@ async function send() {
               link.href = window.URL.createObjectURL(blob);
               link.download = "ConfigFile.json";
               link.click();
-              alert(obj)
+              
            
             }
               else{
-              console.log(status)
+              alert(status)
               }
           });      
 }
