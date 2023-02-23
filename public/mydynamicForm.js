@@ -1,6 +1,4 @@
-//accessthem structure like with code app
-//use it to keep the elements but clear the forms after each close
-//button update appear when list selected changes
+
 var acelFile = {}
 var acelArtifs = {}
 var artifs = {}
@@ -38,12 +36,8 @@ function closeRelForm() {
 
 
 
-//create objects where you store artif classes and use them to populate the forms
-//create sep forms one for sc event then button add mapping to add obj map and rel one
-
-
 function newAttribute() {
-  // document.getElementById("artifPopup").style.backgroundColor = "#999999;";
+ 
   document.getElementById("attribPopupForm").style.display = "block";
 
 }
@@ -53,13 +47,11 @@ document.getElementById("attribPopupForm").style.display = "none";
 document.getElementById("formAttrib").reset();
 }
 
-function saveAttrib(){
-//do i keep both alive or keep one alive then pass it to other
-}
+
 
 async function idChange(artif) {
   if (document.getElementById("objId").value == "Incremental") {
-    console.log('the base')
+  
     document.getElementById("divIdBase").style.display = "block";
 
   }
@@ -80,14 +72,14 @@ async function initArtif(){
 
   const idField = document.getElementById("objId")
   await idField.addEventListener('change', () => {
-    console.log("change")
+   
      idChange(artif) 
   })
   const idBaseField = document.getElementById("idBase")
   await idBaseField.addEventListener('change', () => {
     artif["id"] = idBaseField.value
   })
-    //maybeneedsawait
+ 
     const attribBtn = document.getElementById('newAttrib');
   await attribBtn.addEventListener('click', () => {
     newAttribute()
@@ -96,14 +88,10 @@ async function initArtif(){
 
    const saveAttribBtn = document.getElementById('addAttrib')
    saveAttribBtn.addEventListener('click', () => {
-   console.log('new artif init')
+  
     let attribName = document.getElementById("attribName").value
 
-    // let attribList = document.getElementById('attribs')
-    // let option = document.createElement('option')
-    // option.value = attribName
-    // console.log("attrib name"+attribName)
-    // attribList.appendChild(option)
+   
     let attribType = document.getElementById("type").value
     let static = document.getElementById("static").value
 
@@ -116,7 +104,7 @@ async function initArtif(){
       artif["attributes"][attribName]["static"] = false
       }
 
-    //addattrib to list displayed
+  
 
     closeAttribForm()
     
@@ -126,11 +114,11 @@ async function initArtif(){
 const artifBtn = document.getElementById('saveArtif')
 await artifBtn.addEventListener('click', () => {
     objectType = document.getElementById("objectType").value
-    //artif["id"]= document.getElementById("id").value
+   
     let listArtifs = document.getElementById("artifacts")
 
     let option = document.createElement('option')
-    //option.setAttribute("label",var)
+   
     option.value = objectType
     listArtifs.appendChild(option)
     let artf = {}
@@ -151,8 +139,7 @@ await artifBtn.addEventListener('click', () => {
     });
 
     acelArtifs[objectType] = artf
-    console.log('the artifs are ')
-    console.log(Object.keys(acelArtifs))
+    
     closeForm()
     document.getElementById("formArtif").reset();
     document.getElementById("divIdBase").style.display = "none";
@@ -167,13 +154,12 @@ await artifBtn.addEventListener('click', () => {
 async function initRel(){
     let rel = {}
     
-    //rel["id"] = ""
 
   
 const artifBtn = document.getElementById('saveRel')
 await artifBtn.addEventListener('click', () => {
     relationType = document.getElementById("relationType").value
-    //artif["id"]= document.getElementById("id").value
+   
     let listRels = document.getElementById("Relations")
 
     rel['source'] = document.getElementById('source')
@@ -182,12 +168,11 @@ await artifBtn.addEventListener('click', () => {
 
 
     let option = document.createElement('option')
-    //option.setAttribute("label",var)
+
     option.value = relationType
     listRels.appendChild(option)
     acelRels[relationType] = rel
-    console.log('the rels are ')
-    console.log(Object.keys(acelRels))
+   
     closeRelForm()
     document.getElementById("formRel").reset();
       
@@ -209,8 +194,7 @@ async function initEvent(){
         let paramRaw = document.getElementById("param").value
         let params = paramRaw.split(';')
         event["parameters"] = params
-        console.log("the parameters")
-        console.log(params)
+       
         document.getElementById("topic").style.display = "none";
         document.getElementById("mappingform").style.display = "block";
           
@@ -227,8 +211,7 @@ async function initEvent(){
 
 
       let objectType = document.getElementById("obj").value
-      console.log("object type")
-      console.log(objectType)
+     
 
       let artif = acelArtifs[objectType]
       let attributes = Object.keys(artif)
@@ -245,8 +228,7 @@ async function initEvent(){
     objectMapping.appendChild(paramsList)
 
       attributes.forEach(att => {
-        console.log("increment base")
-        console.log(artif[att]["incrementalBase"])
+       
          if(! artif[att]["incrementalBase"] && att != ""){
 
          
@@ -287,8 +269,7 @@ async function initEvent(){
 
   const mapBtn = document.getElementById('map')
   await mapBtn.addEventListener('click', () => { 
-    console.log('event name after map click')
-    console.log(document.getElementById("eventName").value)
+  
     let scEvent = document.getElementById("scEventName").value
     let objectType = document.getElementById("obj").value
     let artif = acelArtifs[objectType]
@@ -317,20 +298,18 @@ async function initEvent(){
         
     });
     objectMappings[scEvent]["objects"]["lifecycle"] = document.getElementById("lifecycle").value
-//print the objects mapping
-  
+
   })
 
 
 const EventBtn = document.getElementById('saveEvent')
 await EventBtn.addEventListener('click', () => {
     event['scEventName'] = document.getElementById("scEventName").value
-    console.log()
+  
     event["eventMappings"] = []
     const eventMapping = {}
     eventMapping['EventName'] = {}
-    console.log('event name after saveevent click')
-    console.log(document.getElementById("eventName").value)
+   
     eventMapping['EventName']["value"] = document.getElementById("eventName").value
     eventMapping['EventName']["type"] = "String"
     eventMapping['EventName']["required"] = "true"
@@ -344,9 +323,7 @@ await EventBtn.addEventListener('click', () => {
     eventMapping['timestamp']["required"]="true"
     eventMapping['attributes'] = {}
 
-    console.log("object mappin of event")
-    console.log(event['scEventName'])
-    console.log(objectMappings[event['scEventName']])
+    
     eventMapping['objects'] = objectMappings[event['scEventName']]
     
 
@@ -355,9 +332,8 @@ await EventBtn.addEventListener('click', () => {
 
     acelEvents.push(event)
 
-    //acelRels[relationType] = rel
-    console.log('the events are ')
-    console.log(Object.keys(acelEvents))
+   
+    
     closeEventForm()
     document.getElementById("formEvent").reset();
       
@@ -366,25 +342,14 @@ await EventBtn.addEventListener('click', () => {
 
 
 }
-//no form only js
-//add rel id composite
+
 
 async function send() {
-  console.log("we are here")
+ 
 
   let sc = {}
   sc["address"] = document.getElementById("address").value
-//   let address = sc["address"]
-//  let url = "https://api-ropsten.etherscan.io/api?module=contract&action=getabi&address="+address+"&apikey=ACKE2VTDEMAYR8V84RARCBCBCBWPQVJ44M"
-//   const endpoint = new URL(url)
-  
-//   const response = await fetch(endpoint)
-//   console.log(response)
-//     // print the JSON response 
-//   const json = await response.json()
-//   let abi = json.result;
-//   console.log(abi);
-//   sc["abi"] = abi
+
 
   sc["abi"] = document.getElementById("abi").value
   sc["startBlock"] = document.getElementById("startBlock").value
@@ -396,13 +361,20 @@ async function send() {
   acelFile["smartContracts"] = []
   acelFile["smartContracts"].push(sc)
 
-  console.log(acelFile.toString())
+ 
        $.post("create",
              acelFile
           ,
           function (data, status) {
             if(status=='success'){
-               $(location).attr('href', '');
+            
+              const obj = JSON.stringify(data)
+              var blob = new Blob([obj]);
+              var link = document.createElement('a');
+              link.href = window.URL.createObjectURL(blob);
+              link.download = "ConfigFile.json";
+              link.click();
+           
             }
               else{
               console.log(status)
@@ -410,4 +382,3 @@ async function send() {
           });      
 }
 
-//onchange of selected artif display attribs to be mapped and id if extracted
