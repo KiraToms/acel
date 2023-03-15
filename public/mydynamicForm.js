@@ -383,3 +383,28 @@ async function send() {
           });      
 }
 
+async function getFile(filename) {
+ 
+
+      let fileName = {"filename": filename}
+       $.post("files",
+             fileName
+          ,
+          function (data, status) {
+            if(status=='success'){
+            
+              const obj = JSON.stringify(data)
+              var blob = new Blob([obj]);
+              var link = document.createElement('a');
+              link.href = window.URL.createObjectURL(blob);
+              link.download = filename;
+              link.click();
+              
+           
+            }
+              else{
+              alert(status)
+              }
+          });      
+}
+

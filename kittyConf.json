@@ -1,0 +1,643 @@
+{	
+	"smartContracts" : [
+        {
+            "address": "0x06012c8cf97BEaD5deAe237070F9587f8E7A266d",
+            "abi": [{"constant":true,"inputs":[{"name":"_interfaceID","type":"bytes4"}],"name":"supportsInterface","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"cfoAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_tokenId","type":"uint256"},{"name":"_preferredTransport","type":"string"}],"name":"tokenMetadata","outputs":[{"name":"infoUrl","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"promoCreatedCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"approve","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"ceoAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"GEN0_STARTING_PRICE","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_address","type":"address"}],"name":"setSiringAuctionAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"pregnantKitties","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_kittyId","type":"uint256"}],"name":"isPregnant","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"GEN0_AUCTION_DURATION","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"siringAuction","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_address","type":"address"}],"name":"setGeneScienceAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newCEO","type":"address"}],"name":"setCEO","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newCOO","type":"address"}],"name":"setCOO","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_kittyId","type":"uint256"},{"name":"_startingPrice","type":"uint256"},{"name":"_endingPrice","type":"uint256"},{"name":"_duration","type":"uint256"}],"name":"createSaleAuction","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"unpause","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"sireAllowedToAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_matronId","type":"uint256"},{"name":"_sireId","type":"uint256"}],"name":"canBreedWith","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"kittyIndexToApproved","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_kittyId","type":"uint256"},{"name":"_startingPrice","type":"uint256"},{"name":"_endingPrice","type":"uint256"},{"name":"_duration","type":"uint256"}],"name":"createSiringAuction","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"val","type":"uint256"}],"name":"setAutoBirthFee","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_addr","type":"address"},{"name":"_sireId","type":"uint256"}],"name":"approveSiring","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newCFO","type":"address"}],"name":"setCFO","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_genes","type":"uint256"},{"name":"_owner","type":"address"}],"name":"createPromoKitty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"secs","type":"uint256"}],"name":"setSecondsPerBlock","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"paused","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdrawBalance","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"name":"owner","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"GEN0_CREATION_LIMIT","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newContractAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_address","type":"address"}],"name":"setSaleAuctionAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"count","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_v2Address","type":"address"}],"name":"setNewAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"secondsPerBlock","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"pause","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"tokensOfOwner","outputs":[{"name":"ownerTokens","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_matronId","type":"uint256"}],"name":"giveBirth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"withdrawAuctionBalances","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"cooldowns","outputs":[{"name":"","type":"uint32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"kittyIndexToOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"cooAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"autoBirthFee","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"erc721Metadata","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_genes","type":"uint256"}],"name":"createGen0Auction","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_kittyId","type":"uint256"}],"name":"isReadyToBreed","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"PROMO_CREATION_LIMIT","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_contractAddress","type":"address"}],"name":"setMetadataAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"saleAuction","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_id","type":"uint256"}],"name":"getKitty","outputs":[{"name":"isGestating","type":"bool"},{"name":"isReady","type":"bool"},{"name":"cooldownIndex","type":"uint256"},{"name":"nextActionAt","type":"uint256"},{"name":"siringWithId","type":"uint256"},{"name":"birthTime","type":"uint256"},{"name":"matronId","type":"uint256"},{"name":"sireId","type":"uint256"},{"name":"generation","type":"uint256"},{"name":"genes","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_sireId","type":"uint256"},{"name":"_matronId","type":"uint256"}],"name":"bidOnSiringAuction","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"gen0CreatedCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"geneScience","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_matronId","type":"uint256"},{"name":"_sireId","type":"uint256"}],"name":"breedWithAuto","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"matronId","type":"uint256"},{"indexed":false,"name":"sireId","type":"uint256"},{"indexed":false,"name":"cooldownEndBlock","type":"uint256"}],"name":"Pregnant","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"from","type":"address"},{"indexed":false,"name":"to","type":"address"},{"indexed":false,"name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"approved","type":"address"},{"indexed":false,"name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"kittyId","type":"uint256"},{"indexed":false,"name":"matronId","type":"uint256"},{"indexed":false,"name":"sireId","type":"uint256"},{"indexed":false,"name":"genes","type":"uint256"}],"name":"Birth","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"newContract","type":"address"}],"name":"ContractUpgrade","type":"event"}],
+            "startBlock": "4605167",
+            "endBlock": "4610167",
+             "Artifacts":{
+                    "Kitty":{
+                    "id": {"type":"String", "static":true},
+                    "genesSequence": {"type": "String", "static":true},
+                    "birthTime": {"type": "Timestamp", "static":true},
+                    "cooldownPeriod": {"type": "integer", "static":false},
+                    "mother": {"type": "String", "static":true},
+                    "father": {"type": "String", "static":true},
+                    "owner": {"type": "String", "static":false},
+                    "generation": {"type": "integer", "static":true}
+                    }                 
+                
+                },
+                
+            "Relations" : {
+                   
+        
+                 "hasMother": {
+                    "id": {"type":"String", "incrementalBase":"r", "static":true},
+                    "source": {"objectType": "Kitty", "static":true},
+                    "target": {"objectType": "Kitty", "static":true},
+                    "cardinality": "many2one",
+                    "deleted": {"type":"Boolean", "static":false},
+                    "composedId": ["source", "relationType"] }
+                 ,
+                 "hasFather": {
+                    "id": {"type":"String", "incrementalBase":"r", "static":true},
+                    "source": {"objectType": "Kitty", "static":true},
+                    "target": {"objectType": "Kitty", "static":true},
+                    "cardinality": "many2one",
+                    "deleted": {"type":"Boolean", "static":false},
+                    "composedId": ["source", "relationType"] }
+                 ,
+              
+                 "breedingWith": {
+                       "id": {"type":"String", "incrementalBase":"r", "static":true},
+                       "source": {"objectType": "Kitty", "static":true},
+                       "target": {"objectType": "Kitty", "static":true},
+                       "cardinality": "one2one",
+                       "deleted": {"type":"Boolean", "static":false},
+                       "composedId": ["source", "relationType"] }
+                    
+                    },
+        
+        
+                 
+        
+            "Events": [
+        
+                {
+                    "scEventName" : "Birth",
+                    "parameters":["owner", "kittyId", "matronId", "sireId", "genes"],            
+        
+                    "eventMappings" : [
+                        {
+                            "eventName" : {"value" : "Birth of a kitty", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "owner", "required":false}
+                           
+                            },
+                             "objects": [
+                                {
+                                "objectType":"Kitty",
+                                
+                                "id": "kittyId",
+                                "attributes":{
+                                "owner": "owner",
+                                "genesSequence":"genes"},
+                                "lifecycle":"born"
+                                
+                                },
+                                {
+                                    "objectType":"Kitty",
+                                    "id": "matronId",
+                                    "lifecycle":"becameMother"
+                                },
+                                {
+                                    "objectType":"Kitty",
+                                    "id": "sireId",
+                                    "lifecycle":"becameFather"
+                                }
+                            ],
+                            "relations": [
+                               
+                
+                                 {
+                                    "relationType": "hasFather",
+                                    "source": "kittyId", 
+                                    "targets": [{"target": "sireId",
+                                    "changeStatus":"addedTarget"}]
+                                 },
+        
+                                 {
+                                    "relationType": "hasMother",
+                                    "source": "kittyId", 
+                                    "targets": [{"target":"matronId",
+                                    "changeStatus":"addedTarget"}]
+                                 },
+        
+                                 {
+                                    "relationType": "breedingWith",
+                                    "source": "matronId", 
+                                    "targets": [{ "target": "sireId",
+                                    "changeStatus":"deletedTarget"}]
+                                 }
+                            ]
+                            }
+                    ]
+                },
+        
+                {
+                    "scEventName" : "Pregnant",
+                    "parameters":["owner", "matronId", "sireId", "cooldownEndBlock"],            
+        
+                    "eventMappings" : [
+                        {
+                            "eventName" : {"value" : "Pregnancy", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "owner", "required":false}
+                           
+                            },
+                             "objects": [
+                                {
+                                    "objectType":"Kitty",
+                                    
+                                    "id": "matronId",
+                                    "attributes":{
+                                        "cooldownPeriod" : {"type" : "String", "value" : "cooldownEndBlock", "required":false}
+                                   
+                                    },
+                                    "lifecycle":"pregnant"
+                                },
+                                {
+                                    "objectType":"Kitty",
+                                    "id": "sireId",
+                                    "attributes":{
+                                        "cooldownPeriod" : {"type" : "String", "value" : "cooldownEndBlock", "required":false}
+                                    },
+                                    "lifecycle":"futureFather"
+                                }
+                            ],
+                            "relations": [
+                               
+                
+                                 {
+                                    "relationType": "breedingWith",
+                                    "source": "matronId", 
+                                    "targets": [{ "target": "sireId",
+                                    "changeStatus":"addedTarget"}]
+                                 }
+                            ]
+                            }
+                    ]
+                },
+        
+                {
+                    "scEventName" : "Transfer",
+                    "parameters":["from", "to", "tokenId"],            
+        
+                    "eventMappings" : [
+                        {
+                            "eventName" : {"value" : "transfer of a kitty", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "from", "required":false}
+                           
+                            },
+                             "objects": [
+                                {
+                                    "objectType":"Kitty",
+                                    "id": "tokenId",
+                                    "attributes":{
+                                        
+                                        "owner": "to"},
+                                    "lifecycle":"transfered"
+                                }
+        
+                            ],
+                            "relations": [        
+                               
+                            ]
+                            }
+                    ]
+                }
+        
+                
+        
+            ]
+        },     
+        {
+			"address": "0xb1690C08E213a35Ed9bAb7B318DE14420FB57d8C",
+            "abi": [{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"},{"name":"_startingPrice","type":"uint256"},{"name":"_endingPrice","type":"uint256"},{"name":"_duration","type":"uint256"},{"name":"_seller","type":"address"}],"name":"createAuction","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"unpause","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"bid","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"lastGen0SalePrices","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"paused","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdrawBalance","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"getAuction","outputs":[{"name":"seller","type":"address"},{"name":"startingPrice","type":"uint256"},{"name":"endingPrice","type":"uint256"},{"name":"duration","type":"uint256"},{"name":"startedAt","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"ownerCut","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"pause","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"isSaleClockAuction","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"cancelAuctionWhenPaused","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"gen0SaleCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"cancelAuction","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"getCurrentPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"nonFungibleContract","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"averageGen0SalePrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_nftAddr","type":"address"},{"name":"_cut","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenId","type":"uint256"},{"indexed":false,"name":"startingPrice","type":"uint256"},{"indexed":false,"name":"endingPrice","type":"uint256"},{"indexed":false,"name":"duration","type":"uint256"}],"name":"AuctionCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenId","type":"uint256"},{"indexed":false,"name":"totalPrice","type":"uint256"},{"indexed":false,"name":"winner","type":"address"}],"name":"AuctionSuccessful","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenId","type":"uint256"}],"name":"AuctionCancelled","type":"event"},{"anonymous":false,"inputs":[],"name":"Pause","type":"event"},{"anonymous":false,"inputs":[],"name":"Unpause","type":"event"}],
+			"startBlock": "4605167",
+			"endBlock": "4610167",
+			 "Artifacts":{
+                    "Kitty":{
+                    "id": {"type":"String", "static":true},
+                    "genesSequence": {"type": "String", "static":true},
+                    "birthTime": {"type": "Timestamp", "static":true},
+                    "cooldownPeriod": {"type": "integer", "static":false},
+                    "mother": {"type": "String", "static":true},
+                    "father": {"type": "String", "static":true},
+                    "owner": {"type": "String", "static":false},
+                    "generation": {"type": "integer", "static":true}
+                    },
+
+                 
+
+                "SaleAuction":{
+                    "id": {"type":"String", "incrementalBase":"SaleAuct", "static":true},
+                    "KittyId": {"type":"String", "static":true},
+                    "Time": {"type":"String", "static":true},
+                    "startingPrice": {"type":"String", "static":true},
+                    "endingPrice": {"type":"String", "static":true},
+                    "duration": {"type":"String", "static":true},
+                    "totalPrice": {"type":"String", "static":true},
+                    "winner": {"type":"String", "static":true},
+                    "composedId": ["latest", "KittyId"]  
+
+                }
+                
+                },
+                
+            "Relations" : {
+                   
+              
+
+
+                 "hasSaleAuction": {
+                        "id": {"type":"String", "incrementalBase":"r", "static":true},
+                        "source": {"objectType": "Kitty", "static":true},
+                        "target": {"objectType": "Auction", "static":true},
+                        "cardinality": "one2many",
+                        "deleted": {"type":"Boolean", "static":false},
+                        "composedId": ["source", "relationType"] }
+                 },
+
+
+                 
+
+            "Events": [
+				
+
+                {
+                    "scEventName" : "Transfer",
+				    "parameters":["from", "to", "tokenId"],            
+		
+                    "eventMappings" : [
+						{
+                            "eventName" : {"value" : "transfer of a kitty", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "from", "required":false}
+                           
+                            },
+                             "objects": [
+                                {
+                                    "objectType":"Kitty",
+                                    
+                                    "id": "tokenId",
+                                    "attributes":{
+                                        "owner": "to"},
+                                    "lifecycle":"transfered"
+                                }
+
+                            ],
+                            "relations": [        
+                              
+                            ]
+                            }
+					]
+                }
+
+                ,
+
+               
+
+                {
+                    "scEventName" : "AuctionCreated",
+				    "parameters":["tokenId", "startingPrice", "endingPrice", "duration"],            
+		
+                    "eventMappings" : [
+						{
+                            "eventName" : {"value" : "Sale auction of a kitty", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "duration", "required":false}
+                           
+                            }
+                            
+                            ,
+                             "objects": [
+                                {
+                                "objectType":"Kitty",
+                                "id": "tokenId",
+                                "lifecycle":"auctionedForSale"
+                                
+                                },
+                                {
+                                    "objectType":"SaleAuction",
+                                    "id":"base",
+                                    "attributes":{"KittyId": "tokenId",
+                                   
+                                    "startingPrice": "startingPrice",
+                                    "endingPrice": "endingPrice",
+                                    "duration": "duration"},
+                                    "lifecycle":"created"
+                                }
+                                    
+                            
+                            ],
+                            "relations": [
+                               
+                
+                                 {
+                                    "relationType": "hasSaleAuction",
+                                    "source": "tokenId", 
+                                    "targets": [{ "target": {
+                                        "artifact":"SaleAuction",
+                                        "composedId": ["latest", "tokenId"]},
+                                        "changeStatus":"addedTarget"}]
+                                 }
+                            ]
+                            }
+					]
+                },
+
+                {
+                    "scEventName" : "AuctionCancelled",
+				    "parameters":["tokenId"],            
+		
+                    "eventMappings" : [
+						{
+                            "eventName" : {"value" : "Cancel sale auction of a kitty", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "tokenId", "required":false}
+                           
+                            }
+                            
+                            ,
+                             "objects": [
+                                {
+                                "objectType":"Kitty",
+                                "id": "tokenId",
+                                "lifecycle":"auctionedForSaleCancel"
+                                
+                                },
+                                {
+                                    "objectType":"SaleAuction",
+                                    "id":"composed",
+                                    "composedId":["latest", "tokenId"],
+                                    "lifecycle":"cancelled"
+                                }
+                            ],
+                            "relations": [
+                               
+                
+                                 {
+                                    "relationType": "hasSaleAuction",
+                                    "source": "tokenId", 
+                                    "deleted": true,
+                                    "targets": [{ "target": {
+                                        "artifact":"SaleAuction",
+                                        "composedId": ["latest", "tokenId"]},
+                                        "changeStatus":"deletedTarget"}]
+                                 }
+                            ]
+                            }
+					]
+                },
+
+                {
+                    "scEventName" : "AuctionSuccessful",
+				    "parameters":["tokenId", "totalPrice", "winner"],            
+		
+                    "eventMappings" : [
+						{
+                            "eventName" : {"value" : "Complete sale auction of a kitty", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "winner", "required":false}
+                           
+                            }
+                            
+                            ,
+                             "objects": [
+                                {
+                                "objectType":"Kitty",
+                                "id": "tokenId",
+                                "lifecycle":"Sold"
+                                
+                                },
+                                {
+                                    "objectType":"SaleAuction",
+                                    "id":"composed",
+                                    "composedId":["latest", "tokenId"],
+                                    "attributes":{
+                                    "totalPrice": "totalPrice",
+                                    "winner": "winner"},
+                                    "lifecycle":"successful"
+                                }
+                            ],
+                            "relations": [
+                               
+                
+                                 {
+                                    "relationType": "hasSaleAuction",
+                                    "source": "tokenId", 
+                                    "deleted": true,
+                                    "targets": [{ "target": {
+                                        "artifact":"SaleAuction",
+                                        "composedId": ["latest", "tokenId"]},
+                                        "changeStatus":"deletedTarget"}]
+                                 }
+                            ]
+                            }
+					]
+                }
+
+            ]
+        },
+
+        {
+			"address": "0xc7af99fe5513eb6710e6d5f44f9989da40f27f26",
+            "abi": [{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"},{"name":"_startingPrice","type":"uint256"},{"name":"_endingPrice","type":"uint256"},{"name":"_duration","type":"uint256"},{"name":"_seller","type":"address"}],"name":"createAuction","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"unpause","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"bid","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"paused","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdrawBalance","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"isSiringClockAuction","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"getAuction","outputs":[{"name":"seller","type":"address"},{"name":"startingPrice","type":"uint256"},{"name":"endingPrice","type":"uint256"},{"name":"duration","type":"uint256"},{"name":"startedAt","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"ownerCut","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"pause","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"cancelAuctionWhenPaused","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"cancelAuction","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"getCurrentPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"nonFungibleContract","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_nftAddr","type":"address"},{"name":"_cut","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenId","type":"uint256"},{"indexed":false,"name":"startingPrice","type":"uint256"},{"indexed":false,"name":"endingPrice","type":"uint256"},{"indexed":false,"name":"duration","type":"uint256"}],"name":"AuctionCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenId","type":"uint256"},{"indexed":false,"name":"totalPrice","type":"uint256"},{"indexed":false,"name":"winner","type":"address"}],"name":"AuctionSuccessful","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenId","type":"uint256"}],"name":"AuctionCancelled","type":"event"},{"anonymous":false,"inputs":[],"name":"Pause","type":"event"},{"anonymous":false,"inputs":[],"name":"Unpause","type":"event"}],
+			"startBlock": "4605167",
+			"endBlock": "4610167",
+			 "Artifacts":{
+                    "Kitty":{
+                    "id": {"type":"String", "static":true},
+                    "genesSequence": {"type": "String", "static":true},
+                    "birthTime": {"type": "Timestamp", "static":true},
+                    "cooldownPeriod": {"type": "integer", "static":false},
+                    "mother": {"type": "String", "static":true},
+                    "father": {"type": "String", "static":true},
+                    "owner": {"type": "String", "static":false},
+                    "generation": {"type": "integer", "static":true}
+                    },
+
+                 
+                  
+
+                "SireAuction":{
+                    "id": {"type":"String", "incrementalBase":"SireAuct", "static":true},
+                    "KittyId": {"type":"String", "static":true},
+                    "Time": {"type":"String", "static":true},
+                    "startingPrice": {"type":"String", "static":true},
+                    "endingPrice": {"type":"String", "static":true},
+                    "duration": {"type":"String", "static":true},
+                    "totalPrice": {"type":"String", "static":true},
+                    "winner": {"type":"String", "static":true},
+                    "composedId": ["latest", "KittyId"] 
+
+                }
+                
+                },
+                
+            "Relations" : {
+
+                 "hasSireAuction": {
+                        "id": {"type":"String", "incrementalBase":"r", "static":true},
+                        "source": {"objectType": "Kitty", "static":true},
+                        "target": {"objectType": "SireAuction", "static":true},
+                        "cardinality": "one2many",
+                        "deleted": {"type":"Boolean", "static":false},
+                        "composedId": ["source", "relationType"] }
+     
+
+                 },
+
+
+                 
+
+            "Events": [
+
+
+
+                {
+                    "scEventName" : "AuctionCreated",
+				    "parameters":["tokenId", "startingPrice", "endingPrice", "duration"],            
+		
+                    "eventMappings" : [
+						{
+                            "eventName" : {"value" : "Sire Auction of a kitty", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "duration", "required":false}
+                           
+                            }
+                            
+                            ,
+                             "objects": [
+                                {
+                                "objectType":"Kitty",
+                                "id": "tokenId",
+                                "lifecycle":"auctionedForSire"
+                                
+                                },
+                                {
+                                    "objectType":"SireAuction",
+                                    "id":"base",
+                                    "attributes":{"KittyId": "tokenId",
+                                   
+                                    "startingPrice": "startingPrice",
+                                    "endingPrice": "endingPrice",
+                                    "duration": "duration"},
+                                    "lifecycle":"created"
+                                }
+                            ],
+                            "relations": [
+                               
+                
+                                 {
+                                    "relationType": "hasSireAuction",
+                                    "source": "tokenId", 
+                                    "targets": [{ "target": {
+                                        "artifact":"SireAuction",
+                                        "composedId": ["latest", "tokenId"]},
+                                        "changeStatus":"addedTarget"}]
+                                 }
+                            ]
+                            }
+					]
+                },
+
+                {
+                    "scEventName" : "AuctionCancelled",
+				    "parameters":["tokenId"],            
+		
+                    "eventMappings" : [
+						{
+                            "eventName" : {"value" : "Cancel sire auction of a kitty", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "tokenId", "required":false}
+                           
+                            }
+                            
+                            ,
+                             "objects": [
+                                {
+                                "objectType":"Kitty",
+                                "id": "tokenId",
+                                "lifecycle":"auctionedForSireCancel"
+                                
+                                },
+                                {
+                                    "objectType":"SireAuction",
+                                    "id":"composed",
+                                    "composedId":["latest", "tokenId"],
+                                    "lifecycle":"cancelled"
+                                }
+                            ],
+                            "relations": [
+                               
+                
+                                 {
+                                    "relationType": "hasSireAuction",
+                                    "source": "tokenId", 
+                                    "deleted": true,
+                                    "targets": [{ "target": {
+                                        "artifact":"SireAuction",
+                                        "composedId": ["latest", "tokenId"]},
+                                        "changeStatus":"deletedTarget"}]
+                                 }
+                            ]
+                            }
+					]
+                },
+
+                {
+                    "scEventName" : "AuctionSuccessful",
+				    "parameters":["tokenId", "totalPrice", "winner"],            
+		
+                    "eventMappings" : [
+						{
+                            "eventName" : {"value" : "Completed sire auction of a kitty", "type" : "string", "required":true},
+                            "id" : { "type":"String", "incrementalBase":"e", "required":true},
+                            "timestamp" : {"type" : "Timestamp", "value" : "block.timestamp", "required":true},
+                            "attributes":{
+                                "resource" : {"type" : "String", "value" : "winner", "required":false}
+                           
+                            }
+                            
+                            ,
+                             "objects": [
+                                {
+                                "objectType":"Kitty",
+                                "id": "tokenId",
+                                "lifecycle":"rentedForSire"
+                                
+                                },
+                                {
+                                    "objectType":"SireAuction",
+                                    "id":"composed",
+                                    "composedId":["latest", "tokenId"],
+                                    "attributes":{
+                                    "totalPrice": "totalPrice",
+                                    "winner": "winner"},
+                                    "lifecycle":"Successful"
+                                }
+                            ],
+                            "relations": [
+                               
+                
+                                 {
+                                    "relationType": "hasSireAuction",
+                                    "source": "tokenId", 
+                                    "deleted": true,
+                                    "targets": [{ "target": {
+                                        "artifact":"SireAuction",
+                                        "composedId": ["latest", "tokenId"]},
+                                        "changeStatus":"deletedTarget"}]
+                                 }
+                            ]
+                            }
+					]
+                }
+
+            ]
+        }
+    ]
+                   
+}

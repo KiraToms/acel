@@ -40,6 +40,10 @@
               <i class="ph-browsers"></i>
               <span>Configuration Template</span>
             </a>
+            <a href="#files" onclick="openFiles()">
+              <i class="ph-check-square"></i>
+              <span>Example Files</span>
+            </a>
             <a href="#" onclick="openExt()">
               <i class="ph-check-square"></i>
               <span>Extraction</span>
@@ -338,6 +342,39 @@
                       </div>
           </section>
 
+
+          <section class="extract-section" id="files">
+            <div class="transfer-section-header">
+              <div class="fileformPopup" id="filePopupForm">
+                <div class="fileformContainer" id="fileformContainer">
+              <h2>Example Files</h2>
+              <form>
+               <label>
+                  <span >Cryptokitties</span>
+
+                  </label> <br>
+                  <button class="openBotn" name="kittyConf" onclick="getFile('kittyConf.json')">Configuration file</button>
+                
+                  <button class="openBotn" name="kittyAcel" onclick="getFile('kittyAcel.jsonacel')"> ACEL log</button>
+                
+                  <label>
+                    <br> <br>
+                    <span >Augur</span>
+  
+                    </label> <br>
+                    <button class="openBotn" name="augurConf" onclick="getFile('augurConf.json')">Configuration file</button>
+                  
+                    <button class="openBotn" name="augurAcel" onclick="getFile('augurAcel.jsonacel')"> ACEL log</button>
+                  
+               
+                
+              </form> 
+            </div>
+            </div>
+            </div>
+          </section>
+
+
           <section class="extract-section" id="ext">
             <div class="transfer-section-header">
               <div class="fileformPopup" id="filePopupForm">
@@ -352,11 +389,7 @@
                 <button type="submit" class="openBotn" name="upload">Generate ACEL log</button>
                 
               </form>
-              <!--p>Smart Contract Code Upload</p>
-              <form method="post" action="postSc" enctype="multipart/form-data">
-                <input type="file" name="ScCode" /><br /><br />
-                <button type="submit" name="upload">Upload</button>
-              </form-->   
+              
             </div>
             </div>
             </div>

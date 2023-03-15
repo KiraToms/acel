@@ -37,7 +37,7 @@ router.post('/create',  async function (req, res, next) {
     
   let jsonData = req.body
 
-  const filename = "configTest2.json"
+  const filename = "configFile.json"
   let jsonContent = JSON.stringify(jsonData);
 
 await creatingFile(filename, jsonContent).then(data =>{
@@ -46,7 +46,28 @@ await creatingFile(filename, jsonContent).then(data =>{
   console.log(err)
 })
 
-const filepath = path.join(__dirname, 'configTest2.json')
+const filepath = path.join(__dirname, 'configFile.json')
+res.download(filepath, filename, function (err){
+  if(err){
+    console.log(err)
+  }
+  else {
+    console.log("file sent")
+  }
+})
+
+});
+
+
+router.post('/files',  function (req, res, next) {
+
+
+    
+  let filename = req.body.filename
+
+  console.log(filename)
+
+const filepath = path.join(__dirname, filename)
 res.download(filepath, filename, function (err){
   if(err){
     console.log(err)
