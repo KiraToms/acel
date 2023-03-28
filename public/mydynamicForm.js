@@ -408,3 +408,31 @@ async function getFile(filename) {
           });      
 }
 
+async function sendFileData(myFile){
+
+  console.log("trying to get file name acel extract")
+  var file = myFile.files[0];  
+  var filename = file.name;
+  
+  let acelFile= {"filename": filename, "file": file}
+       $.post("extract", acelFile
+             
+          ,
+          function (data, status) {
+            if(status=='success'){
+            
+              const obj = JSON.stringify(data)
+              var blob = new Blob([obj]);
+              var link = document.createElement('a');
+              link.href = window.URL.createObjectURL(blob);
+              link.download = filename;
+              link.click();
+              
+           
+            }
+              else{
+              alert(status)
+              }
+          }); 
+}
+

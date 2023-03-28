@@ -7,6 +7,7 @@ const parser = require('@solidity-parser/parser');
 const { json } = require('body-parser');
 const fs = require('fs');
 const path = require('path')
+const extractAcel = require('./servera')
 
 
 router.get('/', async function (req, res) {
@@ -76,6 +77,30 @@ res.download(filepath, filename, function (err){
     console.log("file sent")
   }
 })
+
+});
+
+router.post('/extract', function (req, res, next) {
+console.log('extraction start')
+
+  let acelFileName = req.body.acelFile.filename
+
+  console.log(acelFileName)
+
+  let bufferData = req.body.acelFile.file.buffer;
+  let stringData = bufferData.toString();
+  extractAcel(stringData)
+
+const filepath = path.join(__dirname, acelFileName)
+res.download(filepath, acelFileName, function (err){
+  if(err){
+    console.log(err)
+  }
+  else {
+    console.log("file sent")
+  }
+})
+  
 
 });
 

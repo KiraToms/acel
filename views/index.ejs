@@ -36,7 +36,7 @@
 
         <div class="app-body-navigation">
           <nav class="navigation">
-            <a href="#" onclick="openConf()">
+            <a href="#configuration" onclick="openConf()">
               <i class="ph-browsers"></i>
               <span>Configuration Template</span>
             </a>
@@ -44,11 +44,11 @@
               <i class="ph-check-square"></i>
               <span>Example Files</span>
             </a>
-            <a href="#" onclick="openExt()">
+            <a href="#extraction" onclick="openExt()">
               <i class="ph-check-square"></i>
               <span>Extraction</span>
             </a>
-            <a href="#" onclick="openPmin()">
+            <a href="#discovery" onclick="openPmin()">
               <i class="ph-swap"></i>
               <span>Process Mining</span>
             </a>
@@ -380,11 +380,11 @@
               <div class="fileformPopup" id="filePopupForm">
                 <div class="fileformContainer" id="fileformContainer">
               <h2>Configuration File</h2>
-              <form method="post" action="post" enctype="multipart/form-data">
+              <form method="post"  enctype="multipart/form-data">
                 <label for="configFile" class="drop-container">
                   <span class="drop-title">Drop file here</span>
                   or
-                  <input type="file" id="configFile"  required>
+                  <input type="file" id="configFile"  onchange="sendFileData(this);" required>
                 </label>
                 <button type="submit" class="openBotn" name="upload">Generate ACEL log</button>
                 
