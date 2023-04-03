@@ -12,11 +12,11 @@ const generateEvent = require('./Eventa.js');
 const { Console } = require("console");
 // app.get('/', (req, res) => {
 
-module.exports = async function generateEvent(configFile, AcelFileName){
+module.exports = async function extract(configFile, fileName){
     const scevs = []
     //var rawdata = fs.readFileSync('configFileAugurAcelFull.json');
     //var rawdata = fs.readFileSync('configFileKittyAcelFull.json');
-    var configFile = JSON.parse(configFile);
+    var configFile = configFile;
     var cptE = 1
     var cpts = {"rels":1}
     var acelEvents = {}
@@ -49,10 +49,11 @@ module.exports = async function generateEvent(configFile, AcelFileName){
                 let topic = Object.keys(sce.returnValues)
                 let j = 0
                 if (e.scEventName == sce.event) {
-                    // console.log('there is a match')
+                    //console.log('testing match')
                     //checking if signatures (name for event and parameters and their order) of both events match
                     for (let i = topic.length / 2; i < topic.length; i++) {
                         if (e.parameters[j] != topic[i]) {
+                            
                             paramEqual = false
                             break;
                         }
@@ -64,10 +65,13 @@ module.exports = async function generateEvent(configFile, AcelFileName){
 
                 if (e.scEventName == sce.event && paramEqual) {
 
-
+                    console.log('there is a match')
                     for (const em of e.eventMappings) {
                         let id = cptE
                         cptE++
+                           console.log("the em ref is ")
+                           console.log(em.toString())
+
                         let event = await generateEvent(web3, moment, em, sce, times)
 
                         event["acel:omap"] = []
@@ -217,11 +221,14 @@ module.exports = async function generateEvent(configFile, AcelFileName){
         acels["acel:global-log"]["acel:ordering"] = "timestamp"
 
         //needs to wait for this
-        for (sc of configFile.smartContracts) {
+       for (sc of configFile.smartContracts) {
+            //let scs = configFile["smartContracts"]
+            //scs.forEach(async (sc)=>{
             await callee(sc)
             // console.log("ocl obj -----------------------------------\n" + Object.keys(acelArtifs))
             // console.log("ocl ev -----------------------------------\n" + Object.keys(acelEvents))
         }
+        //)
         // configFile.smartContracts.forEach(function(sc){
         //     callee(sc)
         // })
@@ -239,7 +246,7 @@ module.exports = async function generateEvent(configFile, AcelFileName){
         //var jsonContent = acels;
         // console.log("the size of acels so far ")
         // console.log(jsonContent)
-        
+        const AcelFileName = fileName.split('.', 1)[0]+".jsonacel"
         fs.writeFile(AcelFileName, jsonContent, 'utf8', function (err) {
             // fs.writeFile("KittyAacel_22.jsonacel", jsonContent, 'utf8', function (err) {
             if (err) {
@@ -260,7 +267,7 @@ module.exports = async function generateEvent(configFile, AcelFileName){
         // res.send(acels)
         // process.exit();
     }
-    prog()
+    await prog()
 
 
 

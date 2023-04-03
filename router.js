@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path')
 const extractAcel = require('./servera')
 
+//router.use(extractAcel);
 
 router.get('/', async function (req, res) {
   await res.render('index');
@@ -80,16 +81,28 @@ res.download(filepath, filename, function (err){
 
 });
 
-router.post('/extract', function (req, res, next) {
+router.post('/extract', upload.single('file'), async function (req, res) {
 console.log('extraction start')
+const start = Date.now();
 
-  let acelFileName = req.body.acelFile.filename
+  let fileName = req.file.originalname
 
-  console.log(acelFileName)
+  
+  console.log("keys data")
+  console.log(fileName)
 
-  let bufferData = req.body.acelFile.file.buffer;
-  let stringData = bufferData.toString();
-  extractAcel(stringData)
+  let bufferData = req.file.buffer
+  let stringData = bufferData.toString()
+  let file = JSON.parse(stringData)
+  
+  console.log("keys of sc")
+  console.log(Object.keys(file.smartContracts))
+  console.log("type of sc")
+  console.log(typeof file.smartContracts)
+  await extractAcel(file, fileName)
+
+
+  let acelFileName = fileName.split('.', 1)[0]+".jsonacel"
 
 const filepath = path.join(__dirname, acelFileName)
 res.download(filepath, acelFileName, function (err){
@@ -97,7 +110,10 @@ res.download(filepath, acelFileName, function (err){
     console.log(err)
   }
   else {
-    console.log("file sent")
+    const end = Date.now();
+    const timeElapsed = (end - start) / 1000;
+    console.log("file sent time elapsed")
+    console.log(timeElapsed)
   }
 })
   

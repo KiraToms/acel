@@ -48,9 +48,10 @@
               <i class="ph-check-square"></i>
               <span>Extraction</span>
             </a>
-            <a href="#discovery" onclick="openPmin()">
+           
+            <a href="#howto" onclick="openPmin()">
               <i class="ph-swap"></i>
-              <span>Process Mining</span>
+              <span>How to</span>
             </a>
           
           </nav>
@@ -379,12 +380,15 @@
             <div class="transfer-section-header">
               <div class="fileformPopup" id="filePopupForm">
                 <div class="fileformContainer" id="fileformContainer">
+                  <div class="loading">
+                    <div class="loading-text">Please wait while your file is being processed...</div>
+                  </div>
               <h2>Configuration File</h2>
-              <form method="post"  enctype="multipart/form-data">
+              <form id="upload-form" method="post" enctype="multipart/form-data">
                 <label for="configFile" class="drop-container">
                   <span class="drop-title">Drop file here</span>
                   or
-                  <input type="file" id="configFile"  onchange="sendFileData(this);" required>
+                  <input type="file" id="extractConfigFile" name="file" required>
                 </label>
                 <button type="submit" class="openBotn" name="upload">Generate ACEL log</button>
                 
@@ -402,16 +406,23 @@
               <div class="transfer-section-header">
                 <div class="fileformPopup" id="filePopupForm">
                   <div class="fileformContainer" id="fileformContainer">
-                <h2>ACEL Log </h2>
-                <form method="post" action="post" enctype="multipart/form-data">
-                  <label for="configFile" class="drop-container">
-                    <span class="drop-title">Drop file here</span>
-                    or
-                    <input type="file" id="configFile"  required>
-                  </label>
-                  <button type="submit" class="openBotn" name="upload">Discover BP model</button>
-                  
-                </form>
+               
+              <p>To test the tool online with a small number of events follow these instructions :
+                
+                <ol>
+                  <li>
+                      Download a configuration file from the <a href="#files"> examples files </a> 
+                  </li>
+                  <li>
+                      Click on the <a href="#extract">extraction</a> option, browse to select the configuration file,click on Generate ACEL Log and wait. 
+                  </li>
+              
+                </ol> 
+              </p>
+          
+                  </div>
+                </div>
+              </div>
             </div>
            
           </section>

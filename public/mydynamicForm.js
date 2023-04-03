@@ -415,8 +415,196 @@ async function sendFileData(myFile){
   var filename = file.name;
   
   let acelFile= {"filename": filename, "file": file}
-       $.post("extract", acelFile
+       $.ajax({
+        url:this.extract, 
+        type:"POST",
+        processData: false,
+        contentType: false,
+        data:acelFile
              
+          ,
+          success:function (data, status) {
+            
+            
+              const obj = JSON.stringify(data)
+              var blob = new Blob([obj]);
+              var link = document.createElement('a');
+              link.href = window.URL.createObjectURL(blob);
+              link.download = filename;
+              link.click();
+          },
+           
+          
+              error:function(){
+                console.log("Error Uploading.", arguments)
+              }
+          
+        })
+        ; 
+}
+
+/*const form = document.getElementById('upload-form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const fileInput = document.getElementById('extractConfigFile');
+  const file = fileInput.files[0];
+  var formData = new FormData();
+  formData.append("file", file);
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost:3000/upload/extract', true);
+  xhr.setRequestHeader('Content-Disposition', `Attachment; filename="${file.name}"`);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        const downloadUrl = window.URL.createObjectURL(xhr.response);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = file.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(downloadUrl);
+      } else {
+        alert('Error uploading file.');
+      }
+      document.querySelector('.loading').style.display = 'none';
+    }
+  };
+  xhr.onprogress = function(e) {
+    if (e.lengthComputable) {
+      const percent = (e.loaded / e.total) * 100;
+      document.querySelector('.loading-text').textContent = `Please wait while your file is being processed... (${percent.toFixed(2)}%)`;
+    }
+  };
+  document.querySelector('.loading').style.display = 'block';
+  xhr.send(formData);
+});*/
+
+
+
+const form = document.getElementById('upload-form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const fileInput = document.getElementById("extractConfigFile");
+  const file = fileInput.files[0];
+  var formData = new FormData();
+  formData.append("file", file);
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost:3000/upload/extract', true);
+  xhr.setRequestHeader('Content-Disposition', `attachment; filename="${file.name}"`);
+  xhr.responseType = 'blob';
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        //const downloadUrl = window.URL.createObjectURL(xhr.response);
+        /*const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = file.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);*/
+        //window.URL.revokeObjectURL(downloadUrl);
+        const saveAs = prompt("File download complete. Enter filename to save as: ");
+        if (saveAs !== null && saveAs !== "") {
+          const blob = new Blob([xhr.response], { type: 'application/octet-stream' });
+          const downloadLink = document.createElement('a');
+          downloadLink.href = window.URL.createObjectURL(blob);
+          downloadLink.download = saveAs+".jsonacel";
+          downloadLink.click();
+        }
+      } else {
+        alert('Error uploading file.');
+      }
+      document.querySelector('.loading').style.display = 'none';
+    }
+  };
+  xhr.onprogress = function(e) {
+    if (e.lengthComputable) {
+      const percent = (e.loaded / e.total) * 100;
+      document.querySelector('.loading-text').textContent = `Please wait while your log is being generated... (${percent.toFixed(2)}%)`;
+    }
+  };
+  document.querySelector('.loading').style.display = 'block';
+  xhr.send(formData);
+});
+
+
+/*const uploadForm = document.getElementById('upload-form');
+    const messageDiv = document.getElementById('message');
+    const loadingDiv = document.getElementById('loading');
+
+    uploadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const fileInput = document.getElementById("extractionConfigFile");
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      
+      formData.append('file', file);
+      
+      loadingDiv.style.display = 'block';
+    
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/upload/extract');
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          loadingDiv.style.display = 'none';
+          if (xhr.status === 200) {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = window.URL.createObjectURL(xhr.response);
+            downloadLink.download = xhr.getResponseHeader('Content-Disposition').split('filename=')[1];
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+          } else {
+            messageDiv.innerText = `Error uploading file: ${xhr.statusText}`;
+          }
+        }
+      };
+    
+      xhr.responseType = 'blob';
+      xhr.send(formData);
+    });*/
+    
+//const form = document.getElementById("extractionForm")
+
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const inputFile = document.getElementById("configFile")
+
+const file = inputFile.files[0];  
+const filename = file.name;
+
+const payload = {
+  "file" : file,
+  "name" : filename
+}
+const data = new FormData();
+data.append( "dataFrame", JSON.stringify( payload ) );
+const customHeaders = {
+  "Content-Type": "application/json",
+}
+
+  fetch("http://localhost:3000/upload/extract", {
+        method: "POST",
+        headers: customHeaders,
+        body: data,
+    }).then(response => {
+      console.log("done")
+    })
+    .catch((error) => ("Something went wrong!", error));
+}
+
+//form.addEventListener("submit", handleSubmit);
+/*$.post("extract", acelFile
+           const data = response.json()
+      const obj = JSON.stringify(data)
+              var blob = new Blob([obj]);
+              var link = document.createElement('a');
+              link.href = window.URL.createObjectURL(blob);
+              link.download = filename.split('.', 1)[0]+".jsonacel";
+              link.click();  
           ,
           function (data, status) {
             if(status=='success'){
@@ -431,8 +619,7 @@ async function sendFileData(myFile){
            
             }
               else{
-              alert(status)
+              alert(status) 
               }
           }); 
-}
-
+}*/
