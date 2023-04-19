@@ -401,7 +401,8 @@ form.addEventListener('submit', (e) => {
   var formData = new FormData();
   formData.append("file", file);
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://localhost:3000/upload/extract', true);
+  const url = window.location.origin + "/upload/extract"
+  xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Disposition', `attachment; filename="${file.name}"`);
   xhr.responseType = 'blob';
   xhr.onreadystatechange = function() {
@@ -412,7 +413,7 @@ form.addEventListener('submit', (e) => {
         const saveAs = prompt("File download complete. Enter filename to save as: ");
         if (saveAs !== null && saveAs !== "") {
           const blob = new Blob([xhr.response]);
-          
+
           const downloadLink = document.createElement('a');
           downloadLink.href = window.URL.createObjectURL(blob);
           downloadLink.download = saveAs+".jsonacel";
