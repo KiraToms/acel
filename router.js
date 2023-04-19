@@ -61,26 +61,27 @@ res.download(filepath, filename, function (err){
 });
 
 
-router.post('/files',  function (req, res, next) {
+router.get('/files/:filename', async function (req, res, next) {
 
 
     
-  let filename = req.body.filename
+  let filename = req.params.filename
 
   console.log(filename)
 
 const filepath = path.join(__dirname, filename)
 console.log(filepath)
-res.download(filepath, filename, function (err){
-  if(err){
-    console.log(err)
-    //res.end()
-  }
-  else {
-    console.log("file sent now")
-    //res.end()
-  }
-})
+
+
+const readStream = fs.createReadStream(filepath);
+res.setHeader('Content-Type', 'application/octet-stream');
+readStream.on('data', chunk => {
+  res.write(chunk);
+});
+readStream.on('end', () => {
+  res.end();
+});
+
 
 });
 

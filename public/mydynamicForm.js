@@ -385,65 +385,11 @@ async function send() {
 
 async function getFile(filename) {
  
-console.log("requesting data")
-      let fileName = {"filename": filename}
-       $.post("files",
-             fileName
-          ,
-          function (data, status) {
-            if(status=='success'){
-            
-              const obj = JSON.stringify(data)
-              console.log("data we recieved")
-              console.log(data)
-              var blob = new Blob([obj]);
-              var link = document.createElement('a');
-              link.href = window.URL.createObjectURL(blob);
-              link.download = filename;
-              link.click();
-              
-           
-            }
-              else{
-              alert(status)
-              }
-          });      
+
+          window.open("http://localhost:3000/upload/files/"+filename, '_blank')
 }
 
-async function sendFileData(myFile){
 
-  console.log("trying to get file name acel extract")
-  var file = myFile.files[0];  
-  var filename = file.name;
-  
-  let acelFile= {"filename": filename, "file": file}
-       $.ajax({
-        url:this.extract, 
-        type:"POST",
-        processData: false,
-        contentType: false,
-        data:acelFile
-             
-          ,
-          success:function (data, status) {
-            
-            
-              const obj = JSON.stringify(data)
-              var blob = new Blob([obj]);
-              var link = document.createElement('a');
-              link.href = window.URL.createObjectURL(blob);
-              link.download = filename;
-              link.click();
-          },
-           
-          
-              error:function(){
-                console.log("Error Uploading.", arguments)
-              }
-          
-        })
-        ; 
-}
 
 
 const form = document.getElementById('upload-form');
