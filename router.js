@@ -70,12 +70,15 @@ router.post('/files',  function (req, res, next) {
   console.log(filename)
 
 const filepath = path.join(__dirname, filename)
+console.log(filepath)
 res.download(filepath, filename, function (err){
   if(err){
     console.log(err)
+    res.end()
   }
   else {
-    console.log("file sent")
+    console.log("file sent now")
+    res.end()
   }
 })
 
@@ -88,35 +91,43 @@ const start = Date.now();
   let fileName = req.file.originalname
 
   
-  console.log("keys data")
-  console.log(fileName)
+  //console.log("keys data")
+  //console.log(fileName)
 
   let bufferData = req.file.buffer
   let stringData = bufferData.toString()
   let file = JSON.parse(stringData)
   
-  console.log("keys of sc")
-  console.log(Object.keys(file.smartContracts))
-  console.log("type of sc")
-  console.log(typeof file.smartContracts)
-  await extractAcel(file, fileName)
+  //console.log("keys of sc")
+  //console.log(Object.keys(file.smartContracts))
+  //console.log("type of sc")
+  //console.log(typeof file.smartContracts)
+//why file sent empty maybe try catch wrong
+ 
+    await extractAcel(file, fileName, res)
 
+    
 
-  let acelFileName = fileName.split('.', 1)[0]+".jsonacel"
+    let acelFileName = fileName.split('.', 1)[0]+".jsonacel"
 
-const filepath = path.join(__dirname, acelFileName)
-res.download(filepath, acelFileName, function (err){
-  if(err){
-    console.log(err)
-  }
-  else {
-    const end = Date.now();
-    const timeElapsed = (end - start) / 1000;
-    console.log("file sent time elapsed")
-    console.log(timeElapsed)
-  }
-})
-  
+    const filepath = path.join(__dirname, acelFileName)
+    
+    res.download(filepath, acelFileName, function (err){
+      if(err){
+        const end = Date.now();
+        const timeElapsed = (end - start) / 1000;
+        console.log("file sent time down")
+        console.log(err)
+        res.end();
+      }
+      else {
+        const end = Date.now();
+        const timeElapsed = (end - start) / 1000;
+        console.log("file sent time else")
+        console.log(timeElapsed)
+        res.end()
+      }
+    })
 
 });
 

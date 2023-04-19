@@ -2,6 +2,7 @@ const Web3 = require("web3")
 const fs = require('fs');
 const moment = require('moment');
 const express = require('express')
+const path = require('path')
 const app = express()
 const port = 8080
 const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/fa265574ec874eee8c4b53bb8b1cb345"))
@@ -12,7 +13,7 @@ const generateEvent = require('./Eventa.js');
 const { Console } = require("console");
 // app.get('/', (req, res) => {
 
-module.exports = async function extract(configFile, fileName){
+module.exports = async function extract(configFile, fileName, res){
     const scevs = []
     //var rawdata = fs.readFileSync('configFileAugurAcelFull.json');
     //var rawdata = fs.readFileSync('configFileKittyAcelFull.json');
@@ -255,13 +256,19 @@ module.exports = async function extract(configFile, fileName){
             }
 
             console.log("JSON file has been saved. THe end");
+            
 
         });
 
-        // var rdata = fs.readFileSync('A.jsonacel');
-        // var evd = JSON.parse(rdata);
-        //  console.log("the saved file contains ")
-        // console.log(evd)
+
+       
+
+      
+       
+        var rdata = fs.readFileSync(AcelFileName);
+        
+        console.log("the saved file contains ")
+        console.log(rdata)
 
 
         // res.send(acels)
