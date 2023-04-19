@@ -385,8 +385,9 @@ async function send() {
 
 async function getFile(filename) {
  
-
-          window.open("http://localhost:3000/upload/files/"+filename, '_blank')
+ const url = window.location.origin + "/upload/files/" +filename
+ console.log(url)
+          window.open(url, '_blank')
 }
 
 
