@@ -74,11 +74,11 @@ console.log(filepath)
 res.download(filepath, filename, function (err){
   if(err){
     console.log(err)
-    res.end()
+    //res.end()
   }
   else {
     console.log("file sent now")
-    res.end()
+    //res.end()
   }
 })
 
