@@ -11,13 +11,10 @@ const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io
 const getAttribs = require('./Attributesa.js')
 const generateEvent = require('./Eventa.js');
 const { Console } = require("console");
-// app.get('/', (req, res) => {
 
 module.exports = async function extract(configFile, fileName, res){
     const scevs = []
-    //var rawdata = fs.readFileSync('configFileAugurAcelFull.json');
-    //var rawdata = fs.readFileSync('configFileKittyAcelFull.json');
-    var configFile = configFile;
+   var configFile = configFile;
     var cptE = 1
     var cpts = {"rels":1}
     var acelEvents = {}
@@ -29,7 +26,7 @@ module.exports = async function extract(configFile, fileName, res){
 
     async function callfor(myContract, sc) {
         let events, chunks;
-        chunks = 100; // Even 10,000 chunks have a few segments that error out
+        chunks = 100; 
         events = [];
         for (let i= parseInt(sc.startBlock); i < parseInt(sc.endBlock); i=i+chunks) {
         //getting all events the smart contract address from start block to end block
@@ -38,7 +35,7 @@ module.exports = async function extract(configFile, fileName, res){
             toBlock: i+chunks-1,
         }).then(r => { events = events.concat(r); console.log("success for sc :",sc.address," from block ", i, " to block ",i+chunks-1," with ",r.length, " evts") }, err => { console.error('sc '+sc.address+" for blockc "+i , err) }).catch(console.log);
         }
-        // console.log({events}); 
+   
         for (const sce of events) {
           
                 console.log("treating event "+sce.event)
@@ -50,9 +47,7 @@ module.exports = async function extract(configFile, fileName, res){
                 let topic = Object.keys(sce.returnValues)
                 let j = 0
                 if (e.scEventName == sce.event) {
-                    //console.log('testing match')
-                    //checking if signatures (name for event and parameters and their order) of both events match
-                    for (let i = topic.length / 2; i < topic.length; i++) {
+                for (let i = topic.length / 2; i < topic.length; i++) {
                         if (e.parameters[j] != topic[i]) {
                             
                             paramEqual = false
@@ -88,7 +83,7 @@ module.exports = async function extract(configFile, fileName, res){
                         var ind = 0
                         let ts = Object.keys(acelEvents).every((i ) => {
                             if (event["acel:timestamp"]< acelEvents[i]["acel:timestamp"]){
-                                // acelEvents.splice(i, 0, event)
+                              
                                 cont = acelEvents[i]
                                 ind = i+1
                                 acelEvents[i] = event
@@ -114,46 +109,17 @@ module.exports = async function extract(configFile, fileName, res){
 
 
 
-                        
-
-                        // console.log("the num of generated events is "+Object.keys(acels["acel:events"]).length)
-                        // console.log("the num of generated objects is "+Object.keys(acels["acel:objects"]).length)
-                        // console.log("the num of generated relations is "+Object.keys(acels["acel:relations"]).length)
-
-
-                        // var jsonContent = JSON.stringify(acels);
-                        //var jsonContent = acels;
-                
-                        
-                        // fs.writeFile("AugurAacel_test.jsonacel", jsonContent, 'utf8', function (err) {
-                        //     fs.writeFile("KittyAacel_22.jsonacel", jsonContent, 'utf8', function (err) {
-                        //     if (err) {
-                        //         console.log("An error occured while writing JSON Object to File.");
-                        //         return console.log(err);
-                        //     }
-                
-                        //     console.log("JSON file has been saved.");
-                
-                        // });
 
                     }
                 }
             }
-            // let scev = {
-            //     "blocknum": sce.blockNumber,
-            //     "tx_hash": sce.transactionHash,
-            //     "contract_address": sce.address,
-            //     "event": sce.event,
-            //     "parameters": sce.returnValues
-            // }
-            // scevs.push(scev)
+      
             
         }
 
 
         
         test++
-        //console.log("sc events -----------------------------------\n"+ scevs.length)
 
         return test
     }
@@ -194,17 +160,9 @@ module.exports = async function extract(configFile, fileName, res){
         })
         
 
-        
-        
-        // console.log("we are here")
-        // console.log("test has " + test)
         let v = await callfor(myContract, sc)
 
-        
-        // console.log("test has now " + test)
-        // console.log("called for " + sc.address)
-
-
+    
 
     }
 
@@ -221,36 +179,20 @@ module.exports = async function extract(configFile, fileName, res){
         acels["acel:global-log"]["acel:version"] = "1.0"
         acels["acel:global-log"]["acel:ordering"] = "timestamp"
 
-        //needs to wait for this
+     
        for (sc of configFile.smartContracts) {
-            //let scs = configFile["smartContracts"]
-            //scs.forEach(async (sc)=>{
             await callee(sc)
-            // console.log("ocl obj -----------------------------------\n" + Object.keys(acelArtifs))
-            // console.log("ocl ev -----------------------------------\n" + Object.keys(acelEvents))
-        }
-        //)
-        // configFile.smartContracts.forEach(function(sc){
-        //     callee(sc)
-        // })
-
-        // acels["acel:events"] = acelEvents
-        // acels["acel:objects"] = acelArtifs
-        // console.log("the final num of generated events is "+Object.keys(acels["acel:events"]).length)
-        // console.log("the final num of generated objects is "+Object.keys(acels["acel:objects"]).length)
-
+      }
+   
         acels["acel:events"] = acelEvents
         acels["acel:objects"] = acelArtifs
         acels["acel:relations"] = acelRelations
 
         var jsonContent = JSON.stringify(acels);
-        //var jsonContent = acels;
-        // console.log("the size of acels so far ")
-        // console.log(jsonContent)
+       
         const AcelFileName = fileName.split('.', 1)[0]+".jsonacel"
         fs.writeFile(AcelFileName, jsonContent, 'utf8', function (err) {
-            // fs.writeFile("KittyAacel_22.jsonacel", jsonContent, 'utf8', function (err) {
-            if (err) {
+           if (err) {
                 console.log("An error occured while writing JSON Object to File.");
                 return console.log(err);
             }
@@ -265,23 +207,14 @@ module.exports = async function extract(configFile, fileName, res){
 
       
        
-        var rdata = fs.readFileSync(AcelFileName);
-        
-        console.log("the saved file contains ")
-        console.log(rdata)
+       
 
 
-        // res.send(acels)
-        // process.exit();
+       
     }
     await prog()
 
 
 
-// })
-
-// app.listen(port, () => {
-//     console.log(`Example app listening at http://localhost:${port}`)
-// })
 
 }

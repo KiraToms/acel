@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path')
 const extractAcel = require('./servera')
 
-//router.use(extractAcel);
+
 
 router.get('/', async function (req, res) {
   await res.render('index');
@@ -87,23 +87,17 @@ readStream.on('end', () => {
 
 router.post('/extract', upload.single('file'), async function (req, res) {
 console.log('extraction start')
-const start = Date.now();
+
 
   let fileName = req.file.originalname
 
   
-  //console.log("keys data")
-  //console.log(fileName)
 
   let bufferData = req.file.buffer
   let stringData = bufferData.toString()
   let file = JSON.parse(stringData)
   
-  //console.log("keys of sc")
-  //console.log(Object.keys(file.smartContracts))
-  //console.log("type of sc")
-  //console.log(typeof file.smartContracts)
-//why file sent empty maybe try catch wrong
+ 
  
     await extractAcel(file, fileName, res)
 
@@ -112,23 +106,15 @@ const start = Date.now();
     let acelFileName = fileName.split('.', 1)[0]+".jsonacel"
 
     const filepath = path.join(__dirname, acelFileName)
-    
-    res.download(filepath, acelFileName, function (err){
-      if(err){
-        const end = Date.now();
-        const timeElapsed = (end - start) / 1000;
-        console.log("file sent time down")
-        console.log(err)
-        res.end();
-      }
-      else {
-        const end = Date.now();
-        const timeElapsed = (end - start) / 1000;
-        console.log("file sent time else")
-        console.log(timeElapsed)
-        res.end()
-      }
-    })
+  
+    const readStream = fs.createReadStream(filepath);
+res.setHeader('Content-Type', 'application/octet-stream');
+readStream.on('data', chunk => {
+  res.write(chunk);
+});
+readStream.on('end', () => {
+  res.end();
+});
 
 });
 

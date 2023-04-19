@@ -412,6 +412,7 @@ form.addEventListener('submit', (e) => {
         const saveAs = prompt("File download complete. Enter filename to save as: ");
         if (saveAs !== null && saveAs !== "") {
           const blob = new Blob([xhr.response]);
+          
           const downloadLink = document.createElement('a');
           downloadLink.href = window.URL.createObjectURL(blob);
           downloadLink.download = saveAs+".jsonacel";
