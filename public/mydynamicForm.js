@@ -385,7 +385,7 @@ async function send() {
 
 async function getFile(filename) {
  
-
+console.log("requesting data")
       let fileName = {"filename": filename}
        $.post("files",
              fileName
@@ -394,6 +394,8 @@ async function getFile(filename) {
             if(status=='success'){
             
               const obj = JSON.stringify(data)
+              console.log("data we recieved")
+              console.log(data)
               var blob = new Blob([obj]);
               var link = document.createElement('a');
               link.href = window.URL.createObjectURL(blob);
