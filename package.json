@@ -1,7 +1,7 @@
 {
     "engines": {
-        "node": "16.13.1"
-      },
+        "node": ">=14.0.0"
+    },
     "name": "extractor",
     "version": "1.0.0",
     "description": "An extractor",
@@ -20,6 +20,6 @@
         "mongoose": "latest",
         "multer": "^1.4.5-lts.1",
         "nodemon": "^2.0.19",
-        "web3": "latest"
+        "web3": "^1.9.0"
     }
 }

@@ -59,7 +59,7 @@
             <h1>ACEL toolkit<small>©</small></h1>
             <div>
               Acel ©<br />
-              All Rights Reserved 2022
+              All Rights Reserved 2023
             </div>
           </footer>
         </div>
@@ -79,6 +79,9 @@
                     data from blockchain and discovery of process models from this data 
                     using existing process mining techniques.
                   </h3>
+                  <h5>
+                    * If this online tool does not work properly for you, due to high traffic or internet issues, you may download it and use it locally via our <a href="https://github.com/KiraToms/acel">Github repository.</a> 
+                  </h5>
                 </div>
                
               </article>
@@ -91,13 +94,16 @@
                 
                 <ol>
                   <li>
-                      Create a configuration file using our template or edit your own file
+                      Create a configuration file using our template
                   </li>
                   <li>
-                      Extract event data and generate an ACEL log by providing a configuration file
+                    Download example files
                   </li>
                   <li>
-                      Discover object-centric models by providing an ACEL log
+                      Extract event data and generate an ACEL log 
+                  </li>
+                  <li>
+                      Find instructions to run the tool
                   </li>
                 </ol> 
               </p>
@@ -113,7 +119,7 @@
               <form class="fo" enctype="multipart/form-data">
                 <label for="address">
                   <strong>
-                    Smart Contract address
+                    Smart Contract Address
                   </strong>
                 </label>
                 <input type="text" id="address" name="address"><br><br>
@@ -127,13 +133,13 @@
 
                 <label for="startBlock">
                   <strong>
-                    Start block
+                    Start Block
                   </strong>
                 </label>
                 <input type="text" id="startBlock" name="startBlock"><br><br>
                 <label for="endBlock">
                   <strong>
-                    End block
+                    End Block
                   </strong>
                   </label>
                 <input type="text" id="endBlock" name="endBlock"><br><br>
@@ -202,7 +208,7 @@
                       </label>
                       <input type="text" id="idBase" placeholder="The prefix of the identifier" name="idBase" required>
                     </div>
-                    <button type="button" class="btn botn" id="newAttrib">Add attribute</button>
+                    <button type="button" class="btn botn" id="newAttrib">Add Attribute</button>
             
                     <button type="button" class="btn" id="saveArtif">Save</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
@@ -354,18 +360,18 @@
                   <span >Cryptokitties</span>
 
                   </label> <br>
-                  <button class="openBotn" name="kittyConf" onclick="getFile('kittyConf.json')">Configuration file</button>
+                  <button class="openBotn" name="kittyConf" onclick="getFile('kittyConf.json')">Configuration File</button>
                 
-                  <button class="openBotn" name="kittyAcel" onclick="getFile('kittyAcel.jsonacel')"> ACEL log</button>
+                  <button class="openBotn" name="kittyAcel" onclick="getFile('kittyAcel.jsonacel')"> ACEL Log</button>
                 
                   <label>
                     <br> <br>
                     <span >Augur</span>
   
                     </label> <br>
-                    <button class="openBotn" name="augurConf" onclick="getFile('augurConf.json')">Configuration file</button>
+                    <button class="openBotn" name="augurConf" onclick="getFile('augurConf.json')">Configuration File</button>
                   
-                    <button class="openBotn" name="augurAcel" onclick="getFile('augurAcel.jsonacel')"> ACEL log</button>
+                    <button class="openBotn" name="augurAcel" onclick="getFile('augurAcel.jsonacel')"> ACEL Log</button>
                   
                
                 
@@ -381,7 +387,7 @@
               <div class="fileformPopup" id="filePopupForm">
                 <div class="fileformContainer" id="fileformContainer">
                   <div class="loading">
-                    <div class="loading-text">Please wait while your file is being processed...</div>
+                    <div class="loading-text"></div>
                   </div>
               <h2>Configuration File</h2>
               <form id="upload-form" method="post" enctype="multipart/form-data">
@@ -414,7 +420,7 @@
                       Download a configuration file from the <a href="#files"> examples files </a> 
                   </li>
                   <li>
-                      Click on the <a href="#extract">extraction</a> option, browse to select the configuration file,click on Generate ACEL Log and wait. 
+                      Click on the <a href="#extract">extraction</a> option, browse to select the configuration file, click on Generate ACEL Log and wait. 
                   </li>
               
                 </ol> 
