@@ -40,3 +40,5 @@ Finally, after all artifacts and relations are saved, you may create a new event
 Once all your events are created click on the **Save File** button to generate and automatically download the configuration file.
 
 
+## Test the tool online
+You can test the ACEL Toolbox online via https://lazy-jade-armadillo-cape.cyclic.app/upload/ 
