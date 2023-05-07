@@ -272,6 +272,7 @@
                         </label>
                         <input type="text" list="cardiList" id="cardinality" name="cardinality" />
                         <datalist id="cardiList">
+                          <option value="One2One"></option>
                           <option value="Many2One"></option>
                           <option value="Many2Many"></option>
                         </datalist>
@@ -309,15 +310,28 @@
 
                       <div class="mappingform" id="mappingform">
                         
-                        
+ 
                           <h2>ACEL Mapping</h2>
                           <label for="eventName">
                             <strong>Event Name</strong>
                           </label>
                           <input type="text" id="eventName" placeholder="Name of the activity" name="eventName" required>
-                          
+                  
                         
-                          <br>
+                          <button type="button" class="btn botn" id="map">Add Object Mapping</button>
+                          
+                          
+                          <button type="button" class="btn botn" id="relmap">Add Relation Mapping</button>
+                  
+                          <button type="button" class="btn" id="saveEvent">Save</button>
+                          <button type="button" class="btn cancel" onclick="closeEventForm()">Close</button>
+                        </div>
+              
+                        <div class="objectmappingformPopup" id="objectmappingformPopup">
+                        <div class="objectmappingformContainer" id="objectmappingformContainer">
+                        
+                          <h2>ACEL Object Mapping</h2>
+                         
                           <label for="obj">
                             <strong>Object</strong>
                           </label>
@@ -333,16 +347,38 @@
 
            
                          </div>
-                          <button type="button" class="btn botn" id="map">Add Object Mapping</button>
-                          
-                          
-                          <button type="button" class="btn botn" id="relmap">Add Relation Mapping</button>
-                  
-                          <button type="button" class="btn" id="saveEvent">Save</button>
-                          <button type="button" class="btn cancel" onclick="closeEventForm()">Close</button>
+                         
+                          <button type="button" class="btn" id="saveObjectMapping">Save</button>
+                          <button type="button" class="btn cancel" id="closeObjectMapping">Close</button>
                         </div>
-              
+                      </div>
                         
+                        <div class="relationmappingformPopup" id="relationmappingformPopup">
+                          <div class="relationmappingformContainer" id="relationmappingformContainer">
+                        
+                        
+                          <h2>ACEL Relation Mapping</h2>
+                         
+                          <label for="rel">
+                            <strong>Relation</strong>
+                          </label>
+                          <input type="text" list="relations" id="rel" name="rel" />
+                         
+                           <br>
+
+                          <label for="attrib">
+                          <strong>Attributes</strong>
+                          </label>
+                        
+                          <div class="relationMapping" id="relationMapping">
+
+
+           
+                          </div>
+                          <button type="button" class="btn" id="saveRelationMapping">Save</button>
+                          <button type="button" class="btn cancel" id="closeRelationMapping">Close</button>
+                        </div>
+                      </div>
                         </form>
                        
                         </div>

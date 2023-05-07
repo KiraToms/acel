@@ -51,7 +51,7 @@ html {
     z-index: 9;
     
   }
-  .fileformContainer, .artifformContainer, .relformContainer, .attribFormContainer, .relFormContainer {
+  .fileformContainer, .artifformContainer, .relformContainer, .attribFormContainer, .relFormContainer, .objectmappingformContainer, .relationmappingformContainer {
     position: relative;
     text-align: center;
     width: 100%;
@@ -62,7 +62,7 @@ html {
 		background-image: -ms-linear-gradient( -90deg, rgb(28, 30, 36) 0%, rgb(54, 58, 70) 100%);
   }
 
-  .artifformContainer input[type=text] , .relformContainer input[type=text] , .fileformContainer input[type=text],   .eventformContainer input[type=text], .attribFormContainer input[type=text] {
+  .artifformContainer input[type=text] , .relformContainer input[type=text] , .fileformContainer input[type=text],   .eventformContainer input[type=text], .attribFormContainer input[type=text], .objectmappingformContainer input[type=text], .relationmappingformContainer input[type=text] {
     width: 95%;
     height: 10%;
     padding: 2%;
@@ -73,7 +73,7 @@ html {
 		opacity: 1;
   }
 
-  .fileformContainer input[type=text]:focus, .relformContainer input[type=text]:focus, .artifformContainer input[type=text]:focus, .eventformContainer input[type=text]:focus, .attribFormContainer input[type=text]:focus{
+  .fileformContainer input[type=text]:focus, .relationmappingformContainer input[type=text]:focus, .objectmappingformContainer input[type=text]:focus, .relformContainer input[type=text]:focus, .artifformContainer input[type=text]:focus, .eventformContainer input[type=text]:focus, .attribFormContainer input[type=text]:focus{
 		color: whitesmoke;
 		opacity: .5;
 		transition: all 0.3s ease;
@@ -113,7 +113,7 @@ html {
   }
   
  
-  .artifformContainer .btn, .relformContainer .btn, .attribFormContainer .btn, .eventformContainer .btn {
+  .artifformContainer .btn, .relationmappingformContainer .btn, .objectmappingformContainer .btn, .relformContainer .btn, .attribFormContainer .btn, .eventformContainer .btn {
     padding: 5px 10px;
     border: none;
     background-color: #5a7237;
@@ -134,15 +134,15 @@ html {
     width: 80%;
   }
 
-  .artifformContainer .botn, .relformContainer .botn {
+  .artifformContainer .botn, .relationmappingformContainer .botn, .objectmappingformContainer .botn, .relformContainer .botn {
     background-color: #bfb942;
     width: 80%;
     margin-top: 15px;
   }
-  .artifformContainer .cancel, .relformContainer .cancel, .attribFormContainer .cancel, .eventformContainer .cancel {
+  .artifformContainer .cancel, .relationmappingformContainer .cancel, .objectmappingformContainer .cancel, .relformContainer .cancel, .attribFormContainer .cancel, .eventformContainer .cancel {
     background-color: #5f2121;
   }
-  .artifformContainer .btn:hover, .relformContainer .btn:hover,
+  .artifformContainer .btn:hover, .relationmappingformContainer .btn:hover, .objectmappingformContainer .btn:hover, .relformContainer .btn:hover,
   .attribFormContainer .btn:hover, .eventformContainer .btn:hover, 
   .openButton:hover, .openBotn:hover {
     opacity: .8;
@@ -165,17 +165,32 @@ html {
     z-index: 11;   
   }
  
-
+  .objectmappingformPopup, .relationmappingformPopup {
+    display: none;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    width: 60%;
+    height: 60%; 
+    margin: auto;
+    transform: translate(-50%, 5%);
+    border-radius: 5px;
+    background: rgba(3,3,3,0.25);
+    box-shadow: 1px 1px 50px #000;
+    z-index: 13;   
+  }
  
   .eventformPopup {
     display: none;
     position: absolute;
-    top: 130%;
+    top: 100%;
     left: 50%;
     right: 0;
     bottom: 0;
     width: 40%;
-    height: 130%; 
+    height: 70%; 
     margin: auto;
     transform: translate(-50%, 5%);
     border-radius: 5px;
@@ -256,6 +271,8 @@ html {
  display: none;
 }
 
+
+
 .loading {
   display: none;
   position: fixed;
@@ -276,3 +293,4 @@ html {
   font-weight: bold;
   text-align: center;
 }
+

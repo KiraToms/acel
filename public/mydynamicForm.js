@@ -30,6 +30,9 @@ function closeRelForm() {
   }
 
   function closeEventForm() {
+  
+  document.getElementById("topic").style.display = "block";
+  document.getElementById("mappingform").style.display = "none";
   document.getElementById("eventPopupForm").style.display = "none";
   document.getElementById("formEvent").reset();
   }
@@ -200,9 +203,12 @@ async function initEvent(){
           
     });
 
-    const objectToMapButton = document.getElementById('obj')
-
     
+   const mapBtn = document.getElementById('map')
+   await mapBtn.addEventListener('click', async() => { 
+    document.getElementById("objectmappingformPopup").style.display = "block";
+
+    const objectToMapButton = document.getElementById('obj')
 
     await objectToMapButton.addEventListener('change', () => {
       let objectMapping = document.getElementById('objectMapping')
@@ -261,15 +267,15 @@ async function initEvent(){
           objectMapping.appendChild(inputlifecycle)
       
       
-      objectMapping.style.display = "block"
+      //objectMapping.style.display = "block"
         
   });
 
-    
-
-  const mapBtn = document.getElementById('map')
-  await mapBtn.addEventListener('click', () => { 
+const saveobjmapBtn = document.getElementById('saveObjectMapping')
+  await saveobjmapBtn.addEventListener('click', async() => { 
   
+    
+    
     let scEvent = document.getElementById("scEventName").value
     let objectType = document.getElementById("obj").value
     let artif = acelArtifs[objectType]
@@ -298,8 +304,122 @@ async function initEvent(){
         
     });
     objectMappings[scEvent]["objects"]["lifecycle"] = document.getElementById("lifecycle").value
+    document.getElementById("objectmappingformPopup").style.display = "none";
+    document.getElementById("objectMapping").innerHTML = "";
+
 
   })
+
+  const closeobjmapBtn = document.getElementById('closeObjectMapping')
+  await closeobjmapBtn.addEventListener('click', async() => { 
+    document.getElementById("objectmappingformPopup").style.display = "none";
+    document.getElementById("objectMapping").innerHTML = "";
+    
+
+  })
+
+  
+   })
+    
+
+  
+
+   const relmapBtn = document.getElementById('relmap')
+   await relmapBtn.addEventListener('click', async() => { 
+    document.getElementById("relationmappingformPopup").style.display = "block";
+
+    const relationToMapButton = document.getElementById('rel')
+
+    await relationToMapButton.addEventListener('change', () => {
+      let relationMapping = document.getElementById('relationMapping')
+
+
+
+
+      let relationType = document.getElementById("rel").value
+     
+
+      let rel = acelRels[relationType]
+      let attributes = Object.keys(rel)
+      
+      let params = event["parameters"]
+      let paramsList = document.createElement('datalist')
+      paramsList.id = "params"
+      params.forEach(p => {          
+          let option = document.createElement('option')
+          option.value = p
+          paramsList.appendChild(option)
+          
+      });
+    relationMapping.appendChild(paramsList)
+
+      attributes.forEach(att => {
+       
+        if(att =! "cardinality" && att != ""){
+         
+          let label = document.createElement('label')
+          label.setAttribute('for', att)
+          label.innerHTML = att         
+          let input = document.createElement('input')
+          input.id = att
+          input.type = 'text'
+          input.setAttribute('list', 'params')
+
+          relationMapping.appendChild(label)
+          relationMapping.appendChild(input)
+
+      
+        }
+          
+      });
+
+      
+        
+  });
+
+const saverelmapBtn = document.getElementById('saveRelationMapping')
+  await saverelmapBtn.addEventListener('click', async() => { 
+  
+    
+    
+    let scEvent = document.getElementById("scEventName").value
+    let relationType = document.getElementById("rel").value
+    let rel = acelArtifs[objectType]
+    let attributes = Object.keys(rel)
+    relationtMappings[scEvent] = {}
+    relationtMappings[scEvent]["relationts"] = []
+    relationtMappings[scEvent]["relationts"]["relationtType"] = relationtType
+    
+  
+  
+    attributes.forEach(att => {
+       if(att != "" && att != "cardinality"){
+       
+      
+      relationMappings[scEvent]["relations"][att] = document.getElementById(att).value
+              
+      }
+     
+        
+    });
+   document.getElementById("relationmappingformPopup").style.display = "none";
+    document.getElementById("relationMapping").innerHTML = "";
+
+
+  })
+
+  const closerelmapBtn = document.getElementById('closeRelationMapping')
+  await closerelmapBtn.addEventListener('click', async() => { 
+    document.getElementById("relationmappingformPopup").style.display = "none";
+    document.getElementById("relationMapping").innerHTML = "";
+    
+
+  })
+
+  
+   })
+
+
 
 
 const EventBtn = document.getElementById('saveEvent')
